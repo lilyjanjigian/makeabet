@@ -4,12 +4,12 @@ import Skeleton from "../pages/Skeleton.js";
 
 const SignUpNavBar = (props) => {
     return (<div className="NavBar-Container">
-        <div className="NavBar-Title">
+        <span className="NavBar-Title">
             BET.
-        </div>
-        <div className="NavBar-Login">
+        </span>
+        <span className="NavBar-Login">
         <Skeleton handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
-        </div>
+        </span>
     </div>)
 }
 
