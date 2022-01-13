@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
-import SignUpNavBar from "./modules/SignUpNavBar.js";
 import SignUpPage from "./pages/SignUpPage.js";
+
 
 import "../utilities.css";
 
@@ -40,14 +39,20 @@ const App = () => {
     post("/api/logout");
   };
 
-  return (
-    <>
-      <Router>
-        <SignUpPage path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <NotFound default />
-      </Router>
-    </>
-  );
+  return userId ? (
+      <>
+        <Router>
+          <NotFound default />
+        </Router>
+      </>
+    ) : (
+      <>
+        <Router>
+          <SignUpPage path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+          <NotFound default />
+        </Router>
+      </>
+    );
 };
 
 export default App;
