@@ -1,24 +1,20 @@
 .NavBar-Title {
-  width: 100%;
-  height: 36px;
   margin-left: 10px;
 
   font-size: 25px;
-  line-height: 50px;
-  /* identical to box height */
-
   color: #c4e500;
 }
 
 .NavBar-Login {
   margin-right: 10px;
   margin-left: 20px;
-  line-height: 50px;
-  text-align: right;
-  /* identical to box height */
 }
 
 .NavBar-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 50px;
 

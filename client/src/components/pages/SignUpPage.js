@@ -3,7 +3,7 @@ import "./SignUpPage.css";
 import SignUpNavBar from "../modules/SignUpNavBar.js";
 
 const SignUpPage = (props) => {
-    return (<div>
+    return (<>
     <SignUpNavBar handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
     <div className="SignUpPage-Background">
         <div className="SignUpPage-Title">
@@ -12,7 +12,7 @@ const SignUpPage = (props) => {
         <div className="SignUpPage-Subtitle1">Betting just got better</div>
         <div className="SignUpPage-Subtitle2">Log in above to start playing</div>
     </div>
-    </div>)
+    </>)
 }
 
 export default SignUpPage;
