@@ -19,8 +19,7 @@ const NewBet = (props) => {
       This is a new bet
       <input type="text" betInput={betInput} onChange={handleChange} />
       <button type="submit" onClick={handleSubmit}>
-        {" "}
-        Bet{" "}
+        BET
       </button>
     </div>
   );

@@ -4,6 +4,8 @@ import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import SignUpNavBar from "./modules/SignUpNavBar.js";
 import SignUpPage from "./pages/SignUpPage.js";
+import Profile from "./pages/Profile.js";
+import NewBet from "./modules/NewBet.js"; // import new bet into feed
 
 import "../utilities.css";
 
@@ -43,7 +45,14 @@ const App = () => {
   return (
     <>
       <Router>
-        <SignUpPage path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <SignUpPage
+          path="/"
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+          userId={userId}
+        />
+        <Profile path="/profile" />
+        <NewBet path="/bet" />
         <NotFound default />
       </Router>
     </>
