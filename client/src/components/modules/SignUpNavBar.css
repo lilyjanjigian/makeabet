@@ -1,4 +1,4 @@
-.NavBar-Title {
+.SignUpNavBar-Title {
   width: 100%;
   height: 36px;
   margin-left: 10px;
@@ -10,7 +10,7 @@
   color: #c4e500;
 }
 
-.NavBar-Login {
+.SignUpNavBar-Login {
   margin-right: 10px;
   margin-left: 20px;
   line-height: 50px;
@@ -18,7 +18,7 @@
   /* identical to box height */
 }
 
-.NavBar-Container {
+.SignUpNavBar-Container {
   width: 100%;
   height: 50px;
 
