@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-//NewBet is the component that is used to create a new bet
+//ComposeBet is the component that is used to create a new bet
 
-const NewBet = (props) => {
+const ComposeBet = (props) => {
   const [betInput, setBetInput] = useState(""); // initial state of bet is empty string
   const handleChange = (event) => {
     setBetInput(event.target.value); //called whenever the user types in the box
@@ -25,4 +25,4 @@ const NewBet = (props) => {
   );
 };
 
-export default NewBet;
+export default ComposeBet;
