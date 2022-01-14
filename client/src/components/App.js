@@ -5,7 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import SignUpNavBar from "./modules/SignUpNavBar.js";
 import SignUpPage from "./pages/SignUpPage.js";
 import Profile from "./pages/Profile.js";
-import NewBet from "./modules/NewBet.js"; // import new bet into feed
+import ComposeBet from "./modules/ComposeBet.js"; // import new bet into feed
 
 import "../utilities.css";
 
@@ -52,7 +52,7 @@ const App = () => {
           userId={userId}
         />
         <Profile path="/profile" />
-        <NewBet path="/bet" />
+        <ComposeBet path="/bet" />
         <NotFound default />
       </Router>
     </>
