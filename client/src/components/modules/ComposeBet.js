@@ -28,11 +28,13 @@ const ComposeBet = (props) => {
 const NewBet = (props) => {
   const addBet = (value) => {
     const body = { content: value };
-    post("/api/bet", body).then((story) => {
+    post("/api/bet", body).then((bet) => {
       props.addNewBet(bet);
     });
   };
   return <ComposeBet defaultText="New Bet" onSubmit={addBet} />;
 };
+
+
 
 export default NewBet;
