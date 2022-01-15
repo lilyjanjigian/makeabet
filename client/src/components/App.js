@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import SignUpPage from "./pages/SignUpPage.js";
+import Profile from "./pages/Profile.js";
+import ComposeBet from "./modules/ComposeBet.js"; // import new bet into feed
 
 
 import "../utilities.css";
@@ -39,20 +41,21 @@ const App = () => {
     post("/api/logout");
   };
 
-  return userId ? (
-      <>
-        <Router>
-          <NotFound default />
-        </Router>
-      </>
-    ) : (
-      <>
-        <Router>
-          <SignUpPage path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-          <NotFound default />
-        </Router>
-      </>
-    );
+  return (
+    <>
+      <Router>
+        <SignUpPage
+          path="/"
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+          userId={userId}
+        />
+        <Profile path="/profile" />
+        <ComposeBet path="/bet" />
+        <NotFound default />
+      </Router>
+    </>
+  );
 };
 
 export default App;
