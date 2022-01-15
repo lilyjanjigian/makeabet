@@ -35,4 +35,4 @@ const NewBet = (props) => {
   return <ComposeBet defaultText="New Bet" onSubmit={addBet} />;
 };
 
-export default ComposeBet;
+export default NewBet;
