@@ -4,6 +4,8 @@ import NotFound from "./pages/NotFound.js";
 import SignUpPage from "./pages/SignUpPage.js";
 import Profile from "./pages/Profile.js";
 import ComposeBet from "./modules/ComposeBet.js"; // import new bet into feed
+import GlobalFeed from "./pages/GlobalFeed.js";
+import FriendsFeed from "./pages/FriendsFeed.js";
 
 
 import "../utilities.css";
@@ -43,17 +45,20 @@ const App = () => {
 
   return (
     <>
-      <Router>
-        <SignUpPage
-          path="/"
-          handleLogin={handleLogin}
-          handleLogout={handleLogout}
-          userId={userId}
-        />
+      {userId ? (
+        <Router>
+        <GlobalFeed path="/" handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
+        <FriendsFeed path="/friends"/>
         <Profile path="/profile" />
         <ComposeBet path="/bet" />
         <NotFound default />
       </Router>
+      ):(
+        <Router>
+        <SignUpPage path="/" handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
+        <NotFound default />
+      </Router>
+      )}
     </>
   );
 };
