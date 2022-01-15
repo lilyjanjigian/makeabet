@@ -3,9 +3,10 @@ import React, { useState } from "react";
 //ComposeBet is the component that is used to create a new bet
 
 const ComposeBet = (props) => {
-  const [betInput, setBetInput] = useState(""); // initial state of bet is empty string
+  const [value, setValue] = useState(""); // initial state of bet is empty string
+
   const handleChange = (event) => {
-    setBetInput(event.target.value); //called whenever the user types in the box
+    setValue(event.target.value); //called whenever the user types in the box
   };
 
   const handleSubmit = (event) => {
@@ -17,7 +18,7 @@ const ComposeBet = (props) => {
   return (
     <div>
       Create a new bet
-      <input type="text" betInput={betInput} onChange={handleChange} />
+      <input type="text" value={value} onChange={handleChange} />
       <button type="submit" onClick={handleSubmit}>
         BET
       </button>

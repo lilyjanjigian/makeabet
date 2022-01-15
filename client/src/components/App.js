@@ -3,10 +3,9 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import SignUpPage from "./pages/SignUpPage.js";
 import Profile from "./pages/Profile.js";
-import ComposeBet from "./modules/ComposeBet.js"; // import new bet into feed
+import NewBet from "./modules/ComposeBet.js"; // import new bet into feed
 import GlobalFeed from "./pages/GlobalFeed.js";
 import FriendsFeed from "./pages/FriendsFeed.js";
-
 
 import "../utilities.css";
 
@@ -47,17 +46,29 @@ const App = () => {
     <>
       {userId ? (
         <Router>
-        <GlobalFeed path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
-        <FriendsFeed path="/friends"/>
-        <Profile path="/profile" />
-        <ComposeBet path="/bet" />
-        <NotFound default />
-      </Router>
-      ):(
+          <GlobalFeed
+            path="/"
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+            userId={userId}
+          />
+          <FriendsFeed path="/friends" />
+          <Profile path="/profile" />
+          <ComposeBet path="/bet" />
+          <NotFound default />
+        </Router>
+      ) : (
         <Router>
-        <SignUpPage path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
-        <NotFound default />
-      </Router>
+          <SignUpPage
+            path="/"
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+            userId={userId}
+          />
+          <NotFound default />
+          <Profile path="/profile" />
+          <NewBet path="/bet" />
+        </Router>
       )}
     </>
   );
