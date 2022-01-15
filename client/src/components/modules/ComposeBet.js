@@ -16,13 +16,23 @@ const ComposeBet = (props) => {
 
   return (
     <div>
-      This is a new bet
+      Create a new bet
       <input type="text" betInput={betInput} onChange={handleChange} />
       <button type="submit" onClick={handleSubmit}>
         BET
       </button>
     </div>
   );
+};
+
+const NewBet = (props) => {
+  const addBet = (value) => {
+    const body = { content: value };
+    post("/api/bet", body).then((story) => {
+      props.addNewBet(bet);
+    });
+  };
+  return <ComposeBet defaultText="New Bet" onSubmit={addBet} />;
 };
 
 export default ComposeBet;
