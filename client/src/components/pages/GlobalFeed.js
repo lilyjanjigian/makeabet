@@ -1,11 +1,35 @@
 import { process_params } from "express/lib/router";
-import React from "react";
-import Skeleton from "./Skeleton.js";
+import React, { useState, useEffect } from "react";
+import NavBar from "../modules/NavBar.js";
+import { get } from "../../utilities.js";
 
 const GlobalFeed = (props) => {
+    const [bets, setBets] = useState([]);
+    useEffect(() => {
+        document.title = "Global Feed";
+        get("/api/globalbets").then((betObjs) => {
+            let reversedBetObjs = betObjs.reverse();
+            setBets(reversedBetObjs);
+        })
+    }, []);
+
+    const addNewBet = (betObj) => {
+        setBets([betObj].concat(bets));
+    };
+
+    let betsList = null;
+    const hasBets = bets.length !== 0;
+    if (hasBets) {
+        betsList = bets.map((betObj) => {
+            //Bet object
+        })
+    } else {
+        betsList = <div>No bets!</div>;
+    }
+    
     return (
         <div>
-            <Skeleton handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
+            <NavBar page={"Global Feed"} handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId} />
         </div>
     )
 }
