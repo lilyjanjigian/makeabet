@@ -1,4 +1,5 @@
 import React from "react";
+import SideBar from "../modules/SideBar.js";
 //will spice up later
 
 const Profile = (props) => {
@@ -6,6 +7,7 @@ const Profile = (props) => {
     <>
       <div>
         <h1> Profile page! ~to come~ </h1>
+        <SideBar />
       </div>
     </>
   );

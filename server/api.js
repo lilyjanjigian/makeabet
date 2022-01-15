@@ -11,6 +11,8 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
+const Bet = require("./models/bet");
+const Guess = require("./models/guess");
 
 // import authentication library
 const auth = require("./auth");
@@ -34,13 +36,33 @@ router.get("/whoami", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  if (req.user) socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  if (req.user)
+    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
 
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+
+//API format: name is a string, then a function
+
+router.get("/globalbets", (req, res) => {
+  Bet.find({}).then((bets) => res.send(bets)); // get all the documents in database
+});
+
+//for making a new bet
+router.post("/bet", (req, res) => {
+  const newBet = new Bet({
+    creator_id: req.body._id,
+    creator_name: req.body.name,
+    content: req.body.content,
+  });
+  newBet.save().then((bet) => {
+    //save to database
+    console.log("bet is saved");
+  });
+});
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
