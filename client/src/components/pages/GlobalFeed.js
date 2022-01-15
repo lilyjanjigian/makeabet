@@ -1,9 +1,11 @@
+import { process_params } from "express/lib/router";
 import React from "react";
+import Skeleton from "./Skeleton.js";
 
 const GlobalFeed = (props) => {
     return (
         <div>
-            Hello there this is Global Feed
+            <Skeleton handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
         </div>
     )
 }
