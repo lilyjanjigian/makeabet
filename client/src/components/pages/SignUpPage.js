@@ -1,10 +1,10 @@
 import React from "react";
 import "./SignUpPage.css";
-import SignUpNavBar from "../modules/SignUpNavBar.js";
+import NavBar from "../modules/NavBar.js";
 
 const SignUpPage = (props) => {
     return (<>
-    <SignUpNavBar handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
+    <NavBar handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
     <div className="SignUpPage-Background">
         <div className="SignUpPage-Title">
             Predict the future

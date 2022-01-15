@@ -47,7 +47,7 @@ const App = () => {
     <>
       {userId ? (
         <Router>
-        <GlobalFeed path="/" handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
+        <GlobalFeed path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
         <FriendsFeed path="/friends"/>
         <Profile path="/profile" />
         <ComposeBet path="/bet" />
@@ -55,7 +55,7 @@ const App = () => {
       </Router>
       ):(
         <Router>
-        <SignUpPage path="/" handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
+        <SignUpPage path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
         <NotFound default />
       </Router>
       )}
