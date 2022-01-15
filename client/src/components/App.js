@@ -18,12 +18,14 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);
+        setUserName(user.name);
       }
     });
   }, []);
@@ -67,7 +69,7 @@ const App = () => {
           />
           <NotFound default />
           <Profile path="/profile" />
-          <NewBet path="/bet" />
+          <NewBet path="/bet" userId={userId} userName={userName} />
         </Router>
       )}
     </>

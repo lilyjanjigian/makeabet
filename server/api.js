@@ -11,6 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
+const Bet = require("./models/bet");
 
 // import authentication library
 const auth = require("./auth");
@@ -46,11 +47,13 @@ router.post("/initsocket", (req, res) => {
 //API format: name is a string, then a function
 router.post("/bet", (req, res) => {
   const newBet = new Bet({
-    creator_id: req.user._id,
-    creator_name: req.user.name,
+    creator_id: req.body._id,
+    creator_name: req.body.name,
     content: req.body.content,
   });
-  newBet.save().then((bet) => res.send(bet));
+  newBet.save().then((bet) => {
+    console.log("bet is saved");
+  });
 });
 
 // anything else falls to this "not found" case

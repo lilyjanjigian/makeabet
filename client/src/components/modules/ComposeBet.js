@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { get, post } from "../../utilities.js";
 //ComposeBet is the component that is used to create a new bet
 
 const ComposeBet = (props) => {
@@ -28,12 +28,13 @@ const ComposeBet = (props) => {
 
 const NewBet = (props) => {
   const addBet = (value) => {
-    const body = { content: value };
-    post("/api/bet", body).then((story) => {
-      props.addNewBet(bet);
+    const body = { content: value, _id: props.userId, name: props.userName };
+    post("/api/bet", body).then((bet) => {
+      console.log("my bet is: " + bet);
+      // props.addNewBet(bet);
     });
   };
   return <ComposeBet defaultText="New Bet" onSubmit={addBet} />;
 };
 
-export default ComposeBet;
+export default NewBet;
