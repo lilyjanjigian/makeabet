@@ -56,7 +56,7 @@ const App = () => {
           />
           <FriendsFeed path="/friends" />
           <Profile path="/profile" />
-          <ComposeBet path="/bet" />
+          <NewBet path="/bet" />
           <NotFound default />
         </Router>
       ) : (

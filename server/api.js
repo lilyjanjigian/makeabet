@@ -12,6 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const Bet = require("./models/bet");
+const Guess = require("./models/guess");
 
 // import authentication library
 const auth = require("./auth");
@@ -45,6 +46,12 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 //API format: name is a string, then a function
+
+router.get("/globalbets", (req, res) => {
+  Bet.find({}).then((bets) => res.send(bets)); // get all the documents in database
+});
+
+//for making a new bet
 router.post("/bet", (req, res) => {
   const newBet = new Bet({
     creator_id: req.body._id,
@@ -52,6 +59,7 @@ router.post("/bet", (req, res) => {
     content: req.body.content,
   });
   newBet.save().then((bet) => {
+    //save to database
     console.log("bet is saved");
   });
 });

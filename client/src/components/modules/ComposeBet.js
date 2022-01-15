@@ -17,7 +17,8 @@ const ComposeBet = (props) => {
 
   return (
     <div>
-      Create a new bet
+      Create a new bet!
+      <br></br>
       <input type="text" value={value} onChange={handleChange} />
       <button type="submit" onClick={handleSubmit}>
         BET
