@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../modules/NavBar.js";
 import { get } from "../../utilities.js";
 import SingleBet from "../modules/SingleBet.js";
-import NewBet from "../modules/ComposeBet.js";
+import { NewBet } from "../modules/ComposeBet.js";
 
 const GlobalFeed = (props) => {
   const [bets, setBets] = useState([]);
@@ -43,8 +43,6 @@ const GlobalFeed = (props) => {
         userId={props.userId}
       />
       Global Feed here
-      <NewBet addNewBet={addNewBet} />
-      {betsList}
     </div>
   );
 };
