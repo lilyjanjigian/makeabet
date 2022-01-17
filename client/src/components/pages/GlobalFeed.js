@@ -20,7 +20,7 @@ const GlobalFeed = (props) => {
   if (bets.length !== 0) {
     feedBets = bets.map((betObj) => {
       // return <SingleBet creator_id={betObj.creator_id} creator_name={betObj.creator_name} content={betObj.content} />;
-      return betObj
+      return <SingleBet creator_name={betObj.creator_name} content={betObj.content} />;
     }); //map takes in a function, which we will apply to every item in the array
   } else {
     feedBets = <div> no bets! </div>;
