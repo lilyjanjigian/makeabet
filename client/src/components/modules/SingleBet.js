@@ -13,9 +13,11 @@ Proptypes
 
 const SingleBet = (props) => {
   return (
-    <div className="Card-story" className="Card-container">
-      <div className="u-bold">{props.creator_name}</div>
-      <div className="Card-storycontent"> {props.content} </div>
+    <div className="Card-container">
+      <div className="u-bold" className="Card-title">
+        {props.creator_name}
+      </div>
+      <div className="Card-betcontent"> {props.content} </div>
     </div>
   );
 };

@@ -1,18 +1,19 @@
-.Card-story {
-  padding: 30px;
-  margin: 20px;
+.Card-title {
+  font-size: 15px;
 }
 
-.Card-storycontent {
+.Card-betcontent {
   font-size: 20px;
-  padding: 20px;
 }
 
 .Card-container {
-  background-color: rgb(255, 234, 176);
+  background-color: rgb(220, 255, 241);
   display: flex;
+  width: 50 px;
+  height: 50px;
+  border: 0.5px black solid;
   flex-direction: row;
   justify-content: left;
-  margin-top: 16px;
+  column-gap: 16px;
   margin-bottom: 16px;
 }
