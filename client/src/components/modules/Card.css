@@ -4,5 +4,12 @@
 }
 
 .Card-storycontent {
-  font-size: 40px;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.Card-container {
+  background-color: rgb(255, 234, 176);
+  margin-top: 16px;
+  margin-bottom: 16px;
 }

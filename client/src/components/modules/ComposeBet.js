@@ -34,9 +34,9 @@ const ComposeBet = (props) => {
  * @param {({storyId,value}) => void} onSubmit: (function) triggered when submit button is pressed
  */
 
-const NewBet = () => {
+const NewBet = (props) => {
   const addBet = (value) => {
-    const body = { content: value };
+    const body = { content: value, name: props.userName };
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
     post("/api/bet", body).then((bet) => {});
   };
