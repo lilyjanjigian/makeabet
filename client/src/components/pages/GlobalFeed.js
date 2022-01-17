@@ -12,15 +12,20 @@ const GlobalFeed = (props) => {
   useEffect(() => {
     document.title = "Global Feed";
     get("/api/globalbets").then((betObjs) => {
-      setBets(betObjs);
+      setBets(betObjs); // an array of bet objects
     });
   }, []);
 
-  return (
-    <div>
-      <SingleBet creator_name="randomhuman" content="i love cheese" />
-    </div>
-  );
+  let feedBets = null;
+  if (bets.length !== 0) {
+    feedBets = bets.map((betObj) => {
+      return <SingleBet creator_name={betObj.creator_name} content={betObj.content} />;
+    }); //map takes in a function, which we will apply to every item in the array
+  } else {
+    feedBets = <div> no bets! </div>;
+  }
+
+  return <div>{feedBets}</div>;
 };
 
 /* ~ const addNewBet = (betObj) => {
