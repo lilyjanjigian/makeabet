@@ -27,15 +27,22 @@ const ComposeBet = (props) => {
   );
 };
 
-const NewBet = (props) => {
+/** New Bet is a component that will live on the feed for adding in new bets
+ * Proptypes
+ * @param {string} defaultText is the placeholder text
+ * @param {string} storyId optional prop?? *DECIDE IF NEEDED*
+ * @param {({storyId,value}) => void} onSubmit: (function) triggered when submit button is pressed
+ */
+
+const NewBet = () => {
   const addBet = (value) => {
-    const body = { content: value, _id: props.userId, name: props.userName };
-    post("/api/bet", body).then((bet) => {
-      console.log("my bet is: " + bet);
-      // props.addNewBet(bet);
-    });
+    const body = { content: value };
+    /* const body = { content: value, _id: props.userId, name: props.userName }; */
+    post("/api/bet", body).then((bet) => {});
   };
-  return <ComposeBet defaultText="New Bet" onSubmit={addBet} />;
+  return <ComposeBet defaultText="create a new bet!" onSubmit={addBet} />;
 };
 
 export default NewBet;
+
+// what we are doing is adding a new post by passing down the function addBet from NewBet to ComposeBet
