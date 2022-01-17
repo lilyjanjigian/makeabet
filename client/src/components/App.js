@@ -60,9 +60,7 @@ const App = () => {
       ) : (
         <Router>
           <SignUpPage path="/" />
-          <NotFound default />
-          <Profile path="/profile" />
-          <NewBet path="/bet" userId={userId} userName={userName} />
+          <NotFound default/>
         </Router>
       )}
     </>
