@@ -3,16 +3,15 @@ import "./SignUpPage.css";
 import NavBar from "../modules/NavBar.js";
 
 const SignUpPage = (props) => {
-    return (<>
-    <NavBar handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
-    <div className="SignUpPage-Background">
-        <div className="SignUpPage-Title">
-            Predict the future
-        </div>
+  return (
+    <>
+      <div className="SignUpPage-Background">
+        <div className="SignUpPage-Title">Predict the future</div>
         <div className="SignUpPage-Subtitle1">Betting just got better</div>
         <div className="SignUpPage-Subtitle2">Log in above to start playing</div>
-    </div>
-    </>)
-}
+      </div>
+    </>
+  );
+};
 
 export default SignUpPage;

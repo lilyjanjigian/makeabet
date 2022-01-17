@@ -1,0 +1,15 @@
+.Card-story {
+  padding: 30px;
+  margin: 20px;
+}
+
+.Card-storycontent {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.Card-container {
+  background-color: rgb(255, 234, 176);
+  margin-top: 16px;
+  margin-bottom: 16px;
+}

@@ -6,6 +6,7 @@ import Profile from "./pages/Profile.js";
 import NewBet from "./modules/ComposeBet.js"; // import new bet into feed
 import GlobalFeed from "./pages/GlobalFeed.js";
 import FriendsFeed from "./pages/FriendsFeed.js";
+import NavBar from "./modules/NavBar.js";
 
 import "../utilities.css";
 
@@ -46,14 +47,11 @@ const App = () => {
 
   return (
     <>
+      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+
       {userId ? (
         <Router>
-          <GlobalFeed
-            path="/"
-            handleLogin={handleLogin}
-            handleLogout={handleLogout}
-            userId={userId}
-          />
+          <GlobalFeed path="/" />
           <FriendsFeed path="/friends" />
           <Profile path="/profile" />
           <NewBet path="/bet" />
@@ -61,12 +59,7 @@ const App = () => {
         </Router>
       ) : (
         <Router>
-          <SignUpPage
-            path="/"
-            handleLogin={handleLogin}
-            handleLogout={handleLogout}
-            userId={userId}
-          />
+          <SignUpPage path="/" />
           <NotFound default />
           <Profile path="/profile" />
           <NewBet path="/bet" userId={userId} userName={userName} />
