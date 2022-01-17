@@ -3,19 +3,27 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../modules/NavBar.js";
 import { get } from "../../utilities.js";
 import SingleBet from "../modules/SingleBet.js";
-import { NewBet } from "../modules/ComposeBet.js";
+import NewBet from "../modules/ComposeBet.js";
 
 const GlobalFeed = (props) => {
+  //define state to hold bets
   const [bets, setBets] = useState([]);
+
   useEffect(() => {
     document.title = "Global Feed";
     get("/api/globalbets").then((betObjs) => {
-      let reversedBetObjs = betObjs.reverse();
-      setBets(reversedBetObjs);
+      setBets(betObjs);
     });
   }, []);
 
-  const addNewBet = (betObj) => {
+  return (
+    <div>
+      <SingleBet creator_name="randomhuman" content="i love cheese" />
+    </div>
+  );
+};
+
+/* ~ const addNewBet = (betObj) => {
     setBets([betObj].concat(bets));
   };
 
@@ -42,9 +50,11 @@ const GlobalFeed = (props) => {
         handleLogout={props.handleLogout}
         userId={props.userId}
       />
-      Global Feed here
+      This is the global feed!
+      <NewBet />
     </div>
   );
 };
+*/
 
 export default GlobalFeed;
