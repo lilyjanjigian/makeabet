@@ -47,8 +47,16 @@ router.post("/initsocket", (req, res) => {
 
 //API format: name is a string, then a function
 
+// get all the bet documents in database
 router.get("/globalbets", (req, res) => {
-  Bet.find({}).then((bets) => res.send(bets)); // get all the documents in database
+  Bet.find({}).then((bets) => res.send(bets));
+});
+
+// get all the created bet documents in database (search for name matching logged in user)
+router.get("/createdbets", (req, res) => {
+  Bet.find({ $match: { creator_name: req.user.name } }).then((createdbets) =>
+    res.send(createdbets)
+  );
 });
 
 //for making a new bet
