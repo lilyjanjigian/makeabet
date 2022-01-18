@@ -7,7 +7,7 @@ const Profile = (props) => {
     <>
       <div>
         <h1> Profile page! ~to come~ </h1>
-        <SideBar />
+        <SideBar userName={props.userName} />
       </div>
     </>
   );

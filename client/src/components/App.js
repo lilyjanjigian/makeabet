@@ -53,14 +53,14 @@ const App = () => {
         <Router>
           <GlobalFeed path="/" />
           <FriendsFeed path="/friends" />
-          <Profile path="/profile" />
+          <Profile path="/profile" userName={userName} />
           <NewBet path="/bet" />
           <NotFound default />
         </Router>
       ) : (
         <Router>
           <SignUpPage path="/" />
-          <NotFound default/>
+          <NotFound default />
         </Router>
       )}
     </>
