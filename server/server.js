@@ -18,7 +18,7 @@
 const validator = require("./validator");
 validator.checkSetup();
 
-require('dotenv').config();
+require("dotenv").config();
 
 //import libraries needed for the webserver to work!
 const http = require("http");
@@ -35,8 +35,7 @@ const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL =
-  process.env.ATLAS_SRV;
+const mongoConnectionURL = process.env.ATLAS_SRV;
 // TODO change database name to the name you chose
 const databaseName = "Jasemily";
 
@@ -102,6 +101,6 @@ const port = process.env.PORT || 3000;
 const server = http.Server(app);
 socketManager.init(server);
 
-server.listen(port), () => {
+server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
