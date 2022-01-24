@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { get } from "../../utilities.js";
 import SingleBet from "../modules/SingleBet.js";
 import NewBet from "../modules/ComposeBet.js"; // later change it to {}
+import Leaderboard from "../modules/Leaderboard.js";
 
 const GlobalFeed = (props) => {
   //define state to hold bets
@@ -35,6 +36,7 @@ const GlobalFeed = (props) => {
   return (
     <div>
       <h1 className="u-textCenter"> Global Feed </h1>
+      <Leaderboard />
       <NewBet />
 
       <div>{feedBets}</div>

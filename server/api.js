@@ -52,6 +52,11 @@ router.get("/globalbets", (req, res) => {
   Bet.find({}).then((bets) => res.send(bets));
 });
 
+// get all the users in the database
+router.get("/users", (req, res) => {
+  User.find({}).then((users) => res.send(users));
+});
+
 // get all the created bet documents in database (search for name matching logged in user)
 router.get("/createdbets", (req, res) => {
   Bet.find({ $match: { creator_name: req.user.name } }).then((createdbets) =>
