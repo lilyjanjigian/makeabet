@@ -18,6 +18,7 @@ const SingleBet = (props) => {
         {props.creator_name}
       </div>
       <div className="Card-betcontent"> {props.content} </div>
+      <div> Options {props.options} </div>
     </div>
   );
 };

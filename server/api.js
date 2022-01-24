@@ -65,6 +65,7 @@ router.post("/bet", (req, res) => {
     creator_id: req.user._id,
     creator_name: req.user.name,
     content: req.body.content,
+    options: req.body.options,
   });
   newBet.save().then((bet) => {
     //save to database

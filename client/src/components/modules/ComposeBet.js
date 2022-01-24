@@ -5,6 +5,7 @@ import { get, post } from "../../utilities.js";
 const initialValues = {
   bet: "",
   option1: "",
+  option2: "",
 };
 
 const ComposeBet = (props) => {
@@ -19,8 +20,8 @@ const ComposeBet = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onSubmit && props.onSubmit(value);
-    setValue("");
+    props.onSubmit && props.onSubmit(values);
+    setValues(initialValues);
   };
 
   return (
@@ -35,6 +36,13 @@ const ComposeBet = (props) => {
         onChange={handleChange}
         name="option1"
         label="Option 1"
+      />
+      <input
+        type="text"
+        value={values.option2}
+        onChange={handleChange}
+        name="option2"
+        label="Option 2"
       />
       <button type="submit" onClick={handleSubmit}>
         BET
@@ -51,8 +59,11 @@ const ComposeBet = (props) => {
  */
 
 const NewBet = (props) => {
-  const addBet = (value) => {
-    const body = { content: value, name: props.userName };
+  const addBet = (values) => {
+    const body = {
+      content: values.bet,
+      options: [values.option1, values.option2],
+    };
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
     post("/api/bet", body).then((bet) => {});
   };
