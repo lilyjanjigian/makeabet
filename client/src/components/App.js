@@ -20,6 +20,7 @@ import { get, post } from "../utilities";
 const App = () => {
   const [userId, setUserId] = useState(undefined);
   const [userName, setUserName] = useState("");
+  const [userPoints, setUserPoints] = useState(500);
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
@@ -27,6 +28,7 @@ const App = () => {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);
         setUserName(user.name);
+        setUserPoints(user.points);
       }
     });
   }, []);
@@ -53,7 +55,7 @@ const App = () => {
         <Router>
           <GlobalFeed path="/" />
           <FriendsFeed path="/friends" />
-          <Profile path="/profile" userName={userName} />
+          <Profile path="/profile" userName={userName} points={userPoints}/>
           <NewBet path="/bet" />
           <NotFound default />
         </Router>

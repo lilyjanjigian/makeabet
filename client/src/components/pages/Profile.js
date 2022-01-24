@@ -17,7 +17,7 @@ const Profile = (props) => {
     <>
       <div>
         <h1> Profile page! ~to come~ </h1>
-        <SideBar userName={props.userName} />
+        <SideBar userName={props.userName} points={props.points}/>
         <div>Created by you: </div>
       </div>
     </>
