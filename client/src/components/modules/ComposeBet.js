@@ -54,13 +54,7 @@ const ComposeBet = (props) => {
         name="option1"
         label="Option 1"
       />
-      <input
-        type="text"
-        value={values.option2}
-        onChange={handleChange}
-        name="option2"
-        label="Option 2"
-      />
+      <input type="text" value={values.option2} onChange={handleChange} name="option2" />
       <button type="submit" onClick={handleOptionClick}>
         Add Option
       </button>
