@@ -6,9 +6,7 @@ const Leaderboard = (props) => {
 
     useEffect(() => {
         get("/api/users").then((userObjs) => {
-            let sortedUsers = userObjs.sort((a, b) => (a.points > b.points) ? 1 : (a.points === b.points) ? ((a.name > b.name) ? 1 : -1) : -1 );
-
-            // list.sort((a, b) => (a.color > b.color) ? 1 : (a.color === b.color) ? ((a.size > b.size) ? 1 : -1) : -1 )
+            let sortedUsers = userObjs.sort((a, b) => (a.points < b.points) ? 1 : (a.points === b.points) ? ((a.name > b.name) ? 1 : -1) : -1 );
             let topUsers = sortedUsers.slice(0, 10);
             setTop10(topUsers.map((userObj) => {
                 return [userObj.name, userObj.points]
