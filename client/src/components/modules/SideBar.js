@@ -6,6 +6,7 @@ const SideBar = (props) => {
   return (
     <div>
       {props.userName}
+      {props.points} points
       <div></div>
       Points Ranking
     </div>
