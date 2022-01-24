@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { get, post } from "../../utilities.js";
+import "./Card.css";
 //ComposeBet is the component that is used to create a new bet
 
 const initialValues = {
@@ -36,7 +37,7 @@ const ComposeBet = (props) => {
     setValues(initialValues);
   };
   return (
-    <div>
+    <div className="Card-newbetcontainer">
       Create a new bet!
       <br></br>
       <input

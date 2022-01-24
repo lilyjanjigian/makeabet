@@ -21,3 +21,9 @@
 .Card-options {
   display: flex;
 }
+
+.Card-newbetcontainer {
+  background-color: rgb(255, 167, 66);
+  margin: 16px;
+  padding: 20px;
+}
