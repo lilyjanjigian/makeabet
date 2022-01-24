@@ -30,6 +30,7 @@ const GlobalFeed = (props) => {
     <div>
       <h1 className="u-textCenter"> Global Feed </h1>
       <NewBet />
+
       <div>{feedBets}</div>
     </div>
   );

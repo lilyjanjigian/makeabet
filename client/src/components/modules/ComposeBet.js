@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import { get, post } from "../../utilities.js";
 //ComposeBet is the component that is used to create a new bet
 
+const initialValues = {
+  bet: "",
+  option1: "",
+};
+
 const ComposeBet = (props) => {
-  const [value, setValue] = useState(""); // initial state of bet is empty string
+  const [values, setValues] = useState(initialValues); // initial state of bet is empty string
 
   const handleChange = (event) => {
-    setValue(event.target.value); //called whenever the user types in the box
+    const { name, value } = event.target;
+
+    setValues({ ...values, [name]: value });
   };
+  //called whenever the user types in the box
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,7 +27,15 @@ const ComposeBet = (props) => {
     <div>
       Create a new bet!
       <br></br>
-      <input type="text" value={value} onChange={handleChange} />
+      <input type="text" value={values.bet} onChange={handleChange} name="bet" label="Bet" />
+      <div>Options</div>
+      <input
+        type="text"
+        value={values.option1}
+        onChange={handleChange}
+        name="option1"
+        label="Option 1"
+      />
       <button type="submit" onClick={handleSubmit}>
         BET
       </button>

@@ -72,6 +72,18 @@ router.post("/bet", (req, res) => {
   });
 });
 
+router.post("/guess", (req, res) => {
+  const newGuess = new Guess({
+    creator_id: req.user._id,
+    creator_name: req.user.name,
+    parent: req.body.parent,
+    content: req.body.content,
+  });
+  newGuess.save().then((guess) => {
+    console.log("guess is saved");
+  });
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
