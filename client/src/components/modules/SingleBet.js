@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import "./Card.css";
-
+import SingleVote from "./SingleVote.js";
 /*
 //SingleBet is a component that renders the creator and the content of a bet
 
@@ -19,8 +19,7 @@ const SingleBet = (props) => {
       </div>
       <div className="Card-betcontent"> {props.content} </div>
       <div className="Card-options">
-        <button>{props.options[0]} </button>
-        <button> {props.options[1]} </button>{" "}
+        {Array.from(Array(props.options.map((option) => <SingleVote content={option} />)))};
       </div>
     </div>
   );

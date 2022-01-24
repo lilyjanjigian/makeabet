@@ -34,6 +34,7 @@ const ComposeBet = (props) => {
     props.onSubmit && props.onSubmit(values);
     setAllInputs([...allInputs, currentInput]);
     setCurrentInput("");
+    console.log(allInputs);
     setValues(initialValues);
   };
   return (
@@ -47,15 +48,6 @@ const ComposeBet = (props) => {
         name="bet"
         placeholder="Create a bet"
       />
-      <div>Options</div>
-      <input
-        type="text"
-        value={values.option1}
-        onChange={handleChange}
-        name="option1"
-        label="Option 1"
-      />
-      <input type="text" value={values.option2} onChange={handleChange} name="option2" />
       <button type="submit" onClick={handleOptionClick}>
         Add Option
       </button>
@@ -75,6 +67,17 @@ const ComposeBet = (props) => {
     </div>
   );
 };
+/** 
+<div>Options</div>
+<input
+type="text"
+value={values.option1}
+onChange={handleChange}
+name="option1"
+label="Option 1"
+/>
+<input type="text" value={values.option2} onChange={handleChange} name="option2" />
+*/
 
 /** New Bet is a component that will live on the feed for adding in new bets
  * Proptypes
@@ -87,7 +90,7 @@ const NewBet = (props) => {
   const addBet = (values, allInputs) => {
     const body = {
       content: values.bet,
-      options: allInputs,
+      options: ["option 1 hardcoded", "option 2 hardcoded"],
     };
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
     post("/api/bet", body).then((bet) => {});

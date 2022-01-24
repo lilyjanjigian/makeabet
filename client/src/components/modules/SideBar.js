@@ -8,7 +8,7 @@ const SideBar = (props) => {
       {props.userName}
       {props.points} points
       <div></div>
-      Points Ranking
+      Ranking {props.ranking}
     </div>
   );
 };
