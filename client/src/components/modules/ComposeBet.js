@@ -4,12 +4,13 @@ import { get, post } from "../../utilities.js";
 
 const initialValues = {
   bet: "",
-  option1: "",
-  option2: "",
 };
 
 const ComposeBet = (props) => {
   const [values, setValues] = useState(initialValues); // initial state of bet is empty string
+  const [counter, setCounter] = useState(0);
+  const [currentInput, setCurrentInput] = useState("");
+  const [allInputs, setAllInputs] = useState([]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -18,17 +19,33 @@ const ComposeBet = (props) => {
   };
   //called whenever the user types in the box
 
+  const handleOptionChange = (event) => {
+    setCurrentInput(event.target.value);
+  };
+
+  const handleOptionClick = () => {
+    setCounter(counter + 1);
+    console.log(counter);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onSubmit && props.onSubmit(values);
+    setAllInputs([...allInputs, currentInput]);
+    setCurrentInput("");
     setValues(initialValues);
   };
-
   return (
     <div>
       Create a new bet!
       <br></br>
-      <input type="text" value={values.bet} onChange={handleChange} name="bet" label="Bet" />
+      <input
+        type="text"
+        value={values.bet}
+        onChange={handleChange}
+        name="bet"
+        placeholder="Create a bet"
+      />
       <div>Options</div>
       <input
         type="text"
@@ -37,13 +54,20 @@ const ComposeBet = (props) => {
         name="option1"
         label="Option 1"
       />
-      <input
-        type="text"
-        value={values.option2}
-        onChange={handleChange}
-        name="option2"
-        label="Option 2"
-      />
+      <input type="text" value={values.option2} onChange={handleChange} name="option2" />
+      <button type="submit" onClick={handleOptionClick}>
+        Add Option
+      </button>
+      {Array.from(Array(counter)).map((c, index) => {
+        return (
+          <input
+            key={c}
+            type="text"
+            onChange={handleOptionChange}
+            placeholder="Add an option"
+          ></input>
+        );
+      })}
       <button type="submit" onClick={handleSubmit}>
         BET
       </button>
@@ -59,10 +83,10 @@ const ComposeBet = (props) => {
  */
 
 const NewBet = (props) => {
-  const addBet = (values) => {
+  const addBet = (values, allInputs) => {
     const body = {
       content: values.bet,
-      options: [values.option1, values.option2],
+      options: allInputs,
     };
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
     post("/api/bet", body).then((bet) => {});

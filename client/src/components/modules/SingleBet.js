@@ -18,7 +18,10 @@ const SingleBet = (props) => {
         {props.creator_name}
       </div>
       <div className="Card-betcontent"> {props.content} </div>
-      <div> Options {props.options} </div>
+      <div className="Card-options">
+        <button>{props.options[0]} </button>
+        <button> {props.options[1]} </button>{" "}
+      </div>
     </div>
   );
 };
