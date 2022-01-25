@@ -48,6 +48,8 @@ const App = () => {
     post("/api/logout");
   };
 
+  
+
   return (
     <>
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
@@ -56,7 +58,7 @@ const App = () => {
         <Router>
           <GlobalFeed path="/" />
           <FriendsFeed path="/friends" />
-          <Profile path="/profile" userName={userName} points={userPoints} />
+          <Profile path="/profile" userName={userName} points={userPoints}/>
           <NewBet path="/bet" />
           <NotFound default />
           <SingleVote path="/testvote" />
