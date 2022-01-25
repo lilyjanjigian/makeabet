@@ -8,70 +8,23 @@ const initialValues = {
 };
 
 const ComposeBet = (props) => {
-  const [values, setValues] = useState(initialValues); // initial state of bet is empty string
-  const [allInputs, setAllInputs] = useState({});
-  const [optionBoxes, setOptionBoxes] = useState([]);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setValues({ ...values, [name]: value });
-  };
-  //called whenever the user types in the box
-
-  const handleOptionChange = (event) => {
-    if (event.target.name in allInputs) {
-      let tempInputs = { ...allInputs };
-      tempInputs[event.target.name] = tempInputs[event.target.name] + event.target.value;
-      setAllInputs(tempInputs);
-    } else {
-      setAllInputs({
-        ...allInputs,
-        [event.target.name]: event.target.value,
-      });
-    }
-    console.log(allInputs);
-  };
-
-  const addInputBox = () => {
-    const indString = optionBoxes.length.toString();
-    const newBox = (
-      <div>
-        <input
-          value={allInputs[indString]}
-          name={indString}
-          onChange={handleOptionChange}
-          type="text"
-          placeholder="Add a new option"
-        />
-      </div>
-    );
-    setOptionBoxes([...optionBoxes, newBox]);
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    props.onSubmit && props.onSubmit(values);
-    setAllInputs({});
-    setOptionBoxes([]);
-    setValues(initialValues);
-  };
   return (
     <div className="Card-newbetcontainer">
       Create a new bet!
       <br></br>
       <input
         type="text"
-        value={values.bet}
-        onChange={handleChange}
+        value={props.values.bet}
+        onChange={props.handleChange}
         name="bet"
         placeholder="Create a bet"
       />
-      <button type="submit" onClick={addInputBox}>
+      <button type="submit" onClick={props.addInputBox}>
         Add Option
       </button>
-      {optionBoxes}
+      {props.optionBoxes}
       <input type="text" />
-      <button type="submit" onClick={handleSubmit}>
+      <button type="submit" onClick={props.handleSubmit}>
         BET
       </button>
     </div>
@@ -131,8 +84,60 @@ const NewBet = (props) => {
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
     post("/api/bet", body).then((bet) => {});
   };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setValues({ ...values, [name]: value });
+  };
+  //called whenever the user types in the box
+
+  const handleOptionChange = (event) => {
+    if (event.target.name in allInputs) {
+      let tempInputs = { ...allInputs };
+      tempInputs[event.target.name] = tempInputs[event.target.name] + event.target.value;
+      setAllInputs(tempInputs);
+    } else {
+      setAllInputs({
+        ...allInputs,
+        [event.target.name]: event.target.value,
+      });
+    }
+    console.log(allInputs);
+  };
+
+  const addInputBox = () => {
+    const indString = optionBoxes.length.toString();
+    const newBox = (
+      <div>
+        <input
+          value={allInputs[indString]}
+          name={indString}
+          onChange={handleOptionChange}
+          type="text"
+          placeholder="Add a new option"
+        />
+      </div>
+    );
+    setOptionBoxes([...optionBoxes, newBox]);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addBet(values);
+    setAllInputs({});
+    setOptionBoxes([]);
+    setValues(initialValues);
+  };
+
   return (
-    <ComposeBet onSubmit={addBet} allInputs={allInputs} values={values} optionBoxes={optionBoxes} />
+    <ComposeBet
+      handleSubmit={handleSubmit}
+      addInputBox={addInputBox}
+      handleOptionChange={handleOptionChange}
+      handleChange={handleChange}
+      values={values}
+      optionBoxes={optionBoxes}
+      allInputs={allInputs}
+    />
   );
 };
 

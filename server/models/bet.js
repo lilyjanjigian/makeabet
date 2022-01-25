@@ -10,6 +10,7 @@ const BetSchema = new mongoose.Schema({
   time_posted: String,
   time_expired: String,
   point_value: Number,
+  isresolved: Boolean,
 });
 
 //compile model from bet schema
