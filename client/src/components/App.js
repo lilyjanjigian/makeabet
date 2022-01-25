@@ -49,7 +49,7 @@ const App = () => {
 
   return (
     <>
-      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} userName={userName}/>
 
       {userId ? (
         <Router>

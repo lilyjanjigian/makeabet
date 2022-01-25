@@ -9,8 +9,19 @@
 }
 
 .NavBar-Login {
+  display: flex;
+  flex-direction: row;
   margin-right: 10px;
   margin-left: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.NavBar-UserName {
+  font-size: 20px;
+  color: #c4e500;
+  font-family: "Michroma", sans-serif;
+  margin-right: 20px;
 }
 
 .NavBar-Container {
@@ -20,6 +31,9 @@
   align-items: center;
   width: 100%;
   height: 50px;
+  position: fixed; /* Fixed Navbar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
 
   background: #1b1342;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -33,9 +47,12 @@
   align-items: center;
   height: 50px;
   background: #1b1342;
+  margin-left: 150px;
 }
 
 .NavBar-Link {
-  font-size: 25px;
+  font-size: 20px;
   color: #f2f2f2;
+  text-decoration: none;
+  font-family: "Michroma", sans-serif;
 }

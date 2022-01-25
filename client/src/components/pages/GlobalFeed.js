@@ -51,12 +51,14 @@ const GlobalFeed = (props) => {
   };
 
   return (
-    <div>
-      <h1 className="u-textCenter"> Global Feed </h1>
-      <Leaderboard />
-      <NewBet />
-
-      <div>{generateFeedBets()}</div>
+    <div className="GlobalFeed-Container">
+      <div className="GlobalFeed-LeaderboardContainer">
+      <Leaderboard/>
+      </div>
+      <div className="GlobalFeed-FeedContainer">
+        <NewBet/>
+        <div>{generateFeedBets()}</div>
+      </div>
     </div>
   );
 };

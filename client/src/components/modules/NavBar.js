@@ -22,6 +22,7 @@ const NavBar = (props) => {
             <></>
         )}
         <div className="NavBar-Login">
+        {props.userId ? (<div className="NavBar-UserName">{props.userName}</div>):(<></>)}
         <Skeleton handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
         </div>
     </div>)

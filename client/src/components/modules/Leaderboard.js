@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { get } from "../../utilities.js";
+import "./Leaderboard.css";
 
 const Leaderboard = (props) => {
   const [top10, setTop10] = useState([]);
@@ -18,7 +19,18 @@ const Leaderboard = (props) => {
     });
   }, []);
 
-  return <div>Leaderboard: {top10}</div>;
+  return <div className="Leaderboard-Container">
+      <div className="Leaderboard-Title">
+          Leaderboard
+      </div>
+      <div className="Leaderboard-Users">
+          {top10.map((user) => (
+              <div className="Leaderboard-User">
+                  {user}
+              </div>
+          ))}
+      </div>
+    </div>;
 };
 
 export default Leaderboard;
