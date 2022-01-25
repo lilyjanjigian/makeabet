@@ -37,7 +37,6 @@ const ComposeBetTest = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(JSON.stringify([value, formValues]));
     addBet(value, formValues);
     setValue("");
     setFormValues([{ name: "" }]);
