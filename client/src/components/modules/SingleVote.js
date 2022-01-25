@@ -9,9 +9,12 @@ import React, { useState } from "react";
 
 const SingleVote = (props) => {
   const [disable, setDisable] = useState(false);
+  const handleEvent = (event) => {
+    console.log("button clicked for" + event);
+  };
   return (
     <div>
-      <button disabled={disable} onClick={() => setDisable(true)}>
+      <button disabled={disable} onClick={handleEvent}>
         {props.content}
       </button>
     </div>
@@ -19,3 +22,7 @@ const SingleVote = (props) => {
 };
 
 export default SingleVote;
+
+/*
+      <button disabled={disable} onClick={() => setDisable(true)}>
+*/

@@ -12,24 +12,29 @@ Proptypes
 */
 
 const SingleBet = (props) => {
-  return (
-    <div className="Card-container">
-      <div className="u-bold" className="Card-title">
-        {props.creator_name}
+  const [members, setMembers] = useState([]);
+  const handleEvent = (event) => {
+    alert("button clicked for" + event);
+    return (
+      <div className="Card-container">
+        <div className="u-bold" className="Card-title">
+          {props.creator_name}
+        </div>
+        <div className="Card-betcontent"> {props.content} </div>
+        <div className="Card-options"></div>
+        <div>
+          Options
+          {props.options.map((opt) => (
+            <SingleVote key={opt.id} content={opt.name} onClick={handleEvent} />
+          ))}
+        </div>
+        <div>Posted on {props.time_posted} </div>
+        <div>Expires on {props.time_expired}</div>
+        <div>Point value: {props.point_value}</div>
+        <div> Resolved? {props.isresolved ? "true" : "false"} </div>
       </div>
-      <div className="Card-betcontent"> {props.content} </div>
-      <div className="Card-options"></div>
-      <div>Options {props.options}</div>
-      <div>Posted on {props.time_posted} </div>
-      <div>Expires on {props.time_expired}</div>
-      <div>Point value: {props.point_value}</div>
-      <div> Resolved? {"true" ? props.isresolved : "false"} </div>
-    </div>
-  );
+    );
+  };
 };
 
 export default SingleBet;
-
-/*
-        {Array.from(Array(props.options.map((option) => <SingleVote content={option} />)))};
-*/
