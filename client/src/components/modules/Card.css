@@ -16,6 +16,7 @@
   justify-content: left;
   column-gap: 16px;
   margin-bottom: 16px;
+  margin-left: 320px;
 }
 
 .Card-options {
@@ -26,4 +27,6 @@
   background-color: rgb(255, 167, 66);
   margin: 16px;
   padding: 20px;
+  margin-left: 320px;
+  margin-top: 50px;
 }

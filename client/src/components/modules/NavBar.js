@@ -13,9 +13,6 @@ const NavBar = (props) => {
             <Link to="/" className="NavBar-Link">
                 World
             </Link>
-            <Link to="/friends" className="NavBar-Link">
-                Friends
-            </Link>
             <Link to="/profile" className="NavBar-Link">
                 Profile
                 {/* TO-DO: MAKE THIS SAY THE USERNAME INSTEAD OF PROFILE??*/}
@@ -25,6 +22,7 @@ const NavBar = (props) => {
             <></>
         )}
         <div className="NavBar-Login">
+        {props.userId ? (<div className="NavBar-UserName">{props.userName}</div>):(<></>)}
         <Skeleton handleLogin={props.handleLogin} handleLogout={props.handleLogout} userId={props.userId}/>
         </div>
     </div>)
