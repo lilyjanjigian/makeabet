@@ -39,7 +39,7 @@ const GlobalFeed = (props) => {
             creator_name={betObj.creator_name}
             content={betObj.content}
             options={betObj.options.map((opt) => (
-              <SingleVote content={opt.name} />
+              <SingleVote key={opt.id} content={opt.name} />
             ))}
             time_posted={betObj.time_posted}
             time_expired={betObj.time_expired}
