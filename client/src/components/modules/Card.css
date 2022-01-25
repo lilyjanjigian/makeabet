@@ -14,7 +14,7 @@
   border: 0.5px black solid;
   flex-direction: column;
   justify-content: left;
-  column-gap: 16px;
+  /* column-gap: 16px; */
   margin-bottom: 16px;
   margin-left: 320px;
 }
@@ -25,7 +25,7 @@
 
 .Card-newbetcontainer {
   background-color: rgb(255, 167, 66);
-  margin: 16px;
+  /* margin: 16px; */
   padding: 20px;
   margin-left: 320px;
   margin-top: 50px;
