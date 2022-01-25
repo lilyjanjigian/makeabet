@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
 .SignUpPage-Title {
   font-style: normal;
   font-weight: normal;
@@ -5,6 +7,7 @@
   line-height: 91px;
   text-align: center;
   color: #56d0ae;
+  font-family: "Michroma", sans-serif;
 }
 
 .SignUpPage-Background {
@@ -22,6 +25,7 @@
   text-align: center;
   margin-top: 25px;
   color: #96fb77;
+  font-family: "Michroma", sans-serif;
 }
 
 .SignUpPage-Subtitle2 {
@@ -32,4 +36,5 @@
   text-align: center;
   margin-top: 20px;
   color: #fbf977;
+  font-family: "Michroma", sans-serif;
 }
