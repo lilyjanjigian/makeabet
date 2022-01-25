@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "@reach/router";
 import "./Card.css";
-import SingleVote from "./SingleVote.js";
+import SingleOption from "./SingleOption.js";
 import { get, post } from "../../utilities.js";
+import SingleVote from "./SingleVote.js";
 
 /*
 //SingleBet is a component that renders the creator and the content of a bet
@@ -10,30 +11,40 @@ import { get, post } from "../../utilities.js";
 */
 
 const SingleBet = (props) => {
-  const [opts, setOpts] = useState({opts: []});
 
-  const [vote, setVote] = useState("")
   const [hasVoted, setHasVoted] = useState(false)
-  const handleVote = (event) => {
-    setVote(event.target.value);
-    setHasVoted(true);
-    alert(JSON.stringify(hasVoted))
-  };
+  const [votes, setVotes] = useState([]);
 
-  const handleEvent = (optId) => {
-    const updatedList = opts.map(opt => {
-      if (opt.id === optId) {
-        return Object.assign({}, opt, {
-          votes: opt.votes + 1
-        });
-      } else {
-        return opt;
-      }
-    });
-  
-    setOpts({
-      opts: updatedList
-    });
+  useEffect(() => {
+    console.log('you have voted', hasVoted);
+   }, [hasVoted]);
+
+  useEffect(() => {
+
+
+    setInterval(() => {
+      console.log("asking server for new votes");
+
+      get("/api/votes", {parent: props.content}).then((voteObjs) => {
+        console.log(voteObjs);
+        setVotes(voteObjs); // an array of vote objects
+      });
+    }, 2000);
+  }, []);
+
+  const generateVotes = () => {
+    let totalVotes = null;
+    if (votes.length !== 0) {
+      totalVotes = votes.map((voteObj) => {
+        console.log(`vote obj: ${JSON.stringify(voteObj)}`);
+        return (
+          <SingleVote creator_name = {voteObj.creator_name} content={voteObj.content} />
+        );
+      }); //map takes in a function, which we will apply to every item in the array
+    } else {
+      totalVotes = <div> no votes! </div>;
+    }
+    return totalVotes;
   };
 
   return (
@@ -44,10 +55,15 @@ const SingleBet = (props) => {
       <div className="Card-betcontent"> {props.content} </div>
       <div className="Card-options"></div>
       <div>
-        Options
-        {props.options.map((opt) => (
-          <SingleVote key={opt.id} votes={opt.votes} parent={props.content} content={opt.name}  />
-        ))}
+        {hasVoted ? <> <div> you already voted! see all the votes: </div>
+        <div>  {generateVotes()} </div> </>: 
+        <><div> {props.options.map((opt) => (
+            <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent={props.content} content={opt.name} />
+          )) }</div></>
+        }
+ 
+
+
       </div>
       <div>Posted on {props.time_posted} </div>
       <div>Expires on {props.time_expired}</div>
@@ -55,6 +71,6 @@ const SingleBet = (props) => {
       <div> Resolved? {props.isresolved ? "true" : "false"} </div>
     </div>
   );
-};
+  }
 
 export default SingleBet;

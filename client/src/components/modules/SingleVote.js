@@ -9,33 +9,11 @@ import { get, post } from "../../utilities.js";
 */
 
 const SingleVote = (props) => {
-  const [voted, setVoted] = useState(false);
-  const handleEvent = (event) => {
-    console.log("button clicked for" + event);
-    setVoted(true)
-    const body = {
-      content: props.content,
-      parent: props.parent
-    }
-    post("/api/vote", body).then((vote) => {})
-  };
   return (
     <div>
-      <button voted = {voted} onClick={handleEvent}>
-        {props.content}
-      </button>
+      <div> {props.creator_name} voted {props.content} </div>
     </div>
   );
 };
 
 export default SingleVote;
-
-/*
-
-    const addVote = () => {
-      const body = {
-        content: props.content,
-        parent: props.parent
-      }
-    post("/api/vote", body).then((vote) => {});
-    */

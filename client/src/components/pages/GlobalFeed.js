@@ -2,10 +2,8 @@ import { process_params } from "express/lib/router";
 import React, { useState, useEffect } from "react";
 import { get } from "../../utilities.js";
 import SingleBet from "../modules/SingleBet.js";
-import NewBet from "../modules/ComposeBet.js"; // later change it to {}
 import Leaderboard from "../modules/Leaderboard.js";
 import ComposeBetTest from "../modules/ComposeBetTest.js";
-import SingleVote from "../modules/SingleVote.js";
 
 const GlobalFeed = (props) => {
   //define state to hold bets

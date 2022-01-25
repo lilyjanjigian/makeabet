@@ -5,7 +5,6 @@ import SignUpPage from "./pages/SignUpPage.js";
 import Profile from "./pages/Profile.js";
 import GlobalFeed from "./pages/GlobalFeed.js";
 import NavBar from "./modules/NavBar.js";
-import SingleVote from "./modules/SingleVote.js";
 import ComposeBetTest from "./modules/ComposeBetTest.js";
 
 import "../utilities.css";
