@@ -8,6 +8,7 @@ import GlobalFeed from "./pages/GlobalFeed.js";
 import FriendsFeed from "./pages/FriendsFeed.js";
 import NavBar from "./modules/NavBar.js";
 import SingleVote from "./modules/SingleVote.js";
+import ComposeBetTest from "./modules/ComposeBetTest.js";
 
 import "../utilities.css";
 
@@ -48,8 +49,6 @@ const App = () => {
     post("/api/logout");
   };
 
-  
-
   return (
     <>
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
@@ -58,15 +57,17 @@ const App = () => {
         <Router>
           <GlobalFeed path="/" />
           <FriendsFeed path="/friends" />
-          <Profile path="/profile" userName={userName} points={userPoints}/>
+          <Profile path="/profile" userName={userName} points={userPoints} />
           <NewBet path="/bet" />
           <NotFound default />
           <SingleVote path="/testvote" />
+          <ComposeBetTest path="/composebet" />
         </Router>
       ) : (
         <Router>
           <SignUpPage path="/" />
           <NotFound default />
+          <ComposeBetTest path="/composebet" />
         </Router>
       )}
     </>

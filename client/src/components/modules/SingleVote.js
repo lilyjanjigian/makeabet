@@ -12,8 +12,7 @@ const SingleVote = (props) => {
   return (
     <div>
       <button disabled={disable} onClick={() => setDisable(true)}>
-        {" "}
-        {props.content}{" "}
+        {props.content}
       </button>
     </div>
   );

@@ -8,6 +8,23 @@ const initialValues = {
 };
 
 const ComposeBet = (props) => {
+  const [formValues, setFormValues] = useState([{ name: "" }]);
+
+  const handleOptionChange = (i, event) => {
+    let newFormValues = [...formValues];
+    newFormValues[i][event.target.name] = event.target.value;
+    setFormValues(newFormValues);
+  };
+
+  const addFormFields = () => {
+    setFormValues([...formValues, { name: "" }]);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(JSON.stringify(formValues));
+  };
+
   return (
     <div className="Card-newbetcontainer">
       Create a new bet!
@@ -19,14 +36,18 @@ const ComposeBet = (props) => {
         name="bet"
         placeholder="Create a bet"
       />
-      <button type="submit" onClick={props.addInputBox}>
-        Add Option
-      </button>
-      {props.optionBoxes}
+      <div className="button-section">
+        <button type="submit" onClick={props.addInputBox}>
+          Add Option
+        </button>
+        {props.optionBoxes}
+      </div>
       <input type="text" />
-      <button type="submit" onClick={props.handleSubmit}>
-        BET
-      </button>
+      <form>
+        <button type="submit" onSubmit={props.handleSubmit}>
+          BET
+        </button>
+      </form>
     </div>
   );
 };
@@ -73,6 +94,7 @@ const NewBet = (props) => {
   const [values, setValues] = useState(initialValues); // initial state of bet is empty string
   const [allInputs, setAllInputs] = useState({});
   const [optionBoxes, setOptionBoxes] = useState([]);
+  const [formValues, setFormValues] = useState([{ name: "" }]);
 
   const addBet = (values, allInputs) => {
     const body = {
@@ -102,7 +124,10 @@ const NewBet = (props) => {
         [event.target.name]: event.target.value,
       });
     }
-    console.log(allInputs);
+  };
+
+  const addFormFields = () => {
+    setFormValues([...formValues, { option: "" }]);
   };
 
   const addInputBox = () => {
@@ -122,8 +147,9 @@ const NewBet = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    addBet(values);
-    setAllInputs({});
+    alert(JSON.stringify(values));
+    alert(JSON.stringify(allInputs));
+    addBet(values, allInputs);
     setOptionBoxes([]);
     setValues(initialValues);
   };
@@ -131,6 +157,7 @@ const NewBet = (props) => {
   return (
     <ComposeBet
       handleSubmit={handleSubmit}
+      addBet={addBet}
       addInputBox={addInputBox}
       handleOptionChange={handleOptionChange}
       handleChange={handleChange}

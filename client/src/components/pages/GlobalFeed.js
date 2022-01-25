@@ -4,6 +4,8 @@ import { get } from "../../utilities.js";
 import SingleBet from "../modules/SingleBet.js";
 import NewBet from "../modules/ComposeBet.js"; // later change it to {}
 import Leaderboard from "../modules/Leaderboard.js";
+import ComposeBetTest from "../modules/ComposeBetTest.js";
+import SingleVote from "../modules/SingleVote.js";
 
 const GlobalFeed = (props) => {
   //define state to hold bets
@@ -36,7 +38,9 @@ const GlobalFeed = (props) => {
           <SingleBet
             creator_name={betObj.creator_name}
             content={betObj.content}
-            options={betObj.options}
+            options={betObj.options.map((opt) => (
+              <SingleVote content={opt} />
+            ))}
             time_posted={betObj.time_posted}
             time_expired={betObj.time_expired}
             point_value={betObj.point_value}
@@ -54,7 +58,7 @@ const GlobalFeed = (props) => {
     <div>
       <h1 className="u-textCenter"> Global Feed </h1>
       <Leaderboard />
-      <NewBet />
+      <ComposeBetTest />
 
       <div>{generateFeedBets()}</div>
     </div>

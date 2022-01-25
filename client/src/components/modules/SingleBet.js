@@ -18,9 +18,8 @@ const SingleBet = (props) => {
         {props.creator_name}
       </div>
       <div className="Card-betcontent"> {props.content} </div>
-      <div className="Card-options">
-        {Array.from(Array(props.options.map((option) => <SingleVote content={option} />)))};
-      </div>
+      <div className="Card-options"></div>
+      <div>Options {props.options}</div>
       <div>Posted on {props.time_posted} </div>
       <div>Expires on {props.time_expired}</div>
       <div>Point value: {props.point_value}</div>
@@ -30,3 +29,7 @@ const SingleBet = (props) => {
 };
 
 export default SingleBet;
+
+/*
+        {Array.from(Array(props.options.map((option) => <SingleVote content={option} />)))};
+*/
