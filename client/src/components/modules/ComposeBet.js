@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { get, post } from "../../utilities.js";
 import "./Card.css";
+import "./ComposeBetTest.css";
+import { get, post } from "../../utilities.js";
 //ComposeBet is the component that is used to create a new bet
 
 const initialValues = {
@@ -36,8 +37,8 @@ const ComposeBet = (props) => {
         name="bet"
         placeholder="Create a bet"
       />
-      <div className="button-section">
-        <button type="submit" onClick={props.addInputBox}>
+      <div className="ComposetBetTest-buttonadd">
+        <button className="button-add" type="submit" onClick={props.addInputBox}>
           Add Option
         </button>
         {props.optionBoxes}

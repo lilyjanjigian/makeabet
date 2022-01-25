@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { get, post } from "../../utilities.js";
+import "./ComposeBetTest.css";
 
 const ComposeBetTest = () => {
   const [value, setValue] = useState("");
@@ -68,7 +69,7 @@ const ComposeBetTest = () => {
         </div>
       ))}
       <div className="button-section">
-        <button className="button add" type="button" onClick={() => addFormFields()}>
+        <button className="ComposeBetTest-buttonadd" type="button" onClick={() => addFormFields()}>
           Add an Option
         </button>
         <button className="button submit" type="submit">
