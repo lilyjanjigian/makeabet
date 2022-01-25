@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { get, post } from "../../utilities.js";
 
 /* component for rendering when a user places their vote on the bet 
 
@@ -8,13 +9,19 @@ import React, { useState } from "react";
 */
 
 const SingleVote = (props) => {
-  const [disable, setDisable] = useState(false);
+  const [voted, setVoted] = useState(false);
   const handleEvent = (event) => {
     console.log("button clicked for" + event);
+    setVoted(true)
+    const body = {
+      content: props.content,
+      parent: props.parent
+    }
+    post("/api/vote", body).then((vote) => {})
   };
   return (
     <div>
-      <button disabled={disable} onClick={handleEvent}>
+      <button voted = {voted} onClick={handleEvent}>
         {props.content}
       </button>
     </div>
@@ -24,5 +31,11 @@ const SingleVote = (props) => {
 export default SingleVote;
 
 /*
-      <button disabled={disable} onClick={() => setDisable(true)}>
-*/
+
+    const addVote = () => {
+      const body = {
+        content: props.content,
+        parent: props.parent
+      }
+    post("/api/vote", body).then((vote) => {});
+    */

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 //define a guess schema
 
-const GuessSchema = new mongoose.Schema({
+const VoteSchema = new mongoose.Schema({
   creator_id: String,
   creator_name: String,
   parent: String,
@@ -9,4 +9,4 @@ const GuessSchema = new mongoose.Schema({
 });
 
 //compile
-module.exports = mongoose.model("guess", GuessSchema);
+module.exports = mongoose.model("vote", VoteSchema);

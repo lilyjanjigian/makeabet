@@ -12,7 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const Bet = require("./models/bet");
-const Guess = require("./models/guess");
+const Vote = require("./models/vote");
 
 // import authentication library
 const auth = require("./auth");
@@ -97,15 +97,15 @@ router.post("/bet", (req, res) => {
   });
 });
 
-router.post("/guess", (req, res) => {
-  const newGuess = new Guess({
+router.post("/vote", (req, res) => {
+  const newVote = new Vote({
     creator_id: req.user._id,
     creator_name: req.user.name,
     parent: req.body.parent,
     content: req.body.content,
   });
-  newGuess.save().then((guess) => {
-    console.log("guess is saved");
+  newVote.save().then((vote) => {
+    console.log("vote is saved");
   });
 });
 
