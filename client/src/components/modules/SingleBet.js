@@ -21,6 +21,9 @@ const SingleBet = (props) => {
       <div className="Card-options">
         {Array.from(Array(props.options.map((option) => <SingleVote content={option} />)))};
       </div>
+      <div>Posted on {props.time_posted} </div>
+      <div>Expires on {props.time_expired}</div>
+      <div>Point value: {props.point_value}</div>
     </div>
   );
 };

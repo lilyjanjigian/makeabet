@@ -26,6 +26,9 @@ const GlobalFeed = (props) => {
           creator_name={betObj.creator_name}
           content={betObj.content}
           options={betObj.options}
+          time_posted={betObj.time_posted}
+          time_expired={betObj.time_expired}
+          point_value={betObj.point_value}
         />
       );
     }); //map takes in a function, which we will apply to every item in the array

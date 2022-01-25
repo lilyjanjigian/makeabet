@@ -66,11 +66,20 @@ router.get("/createdbets", (req, res) => {
 
 //for making a new bet
 router.post("/bet", (req, res) => {
+  let dateTime = new Date();
+  let date = String(dateTime.getMonth()+1)+'/'+String(dateTime.getDate())+'/'+String(dateTime.getFullYear())
+  let hours = dateTime.getHours() > 12 ? String(dateTime.getHours() - 12) : String(dateTime.getHours());
+  let minutes = dateTime.getMinutes() > 10 ? String(dateTime.getMinutes()) : '0'+String(dateTime.getMinutes());
+  let AMPM = dateTime.getHours() < 12 ? ' AM' : ' PM';
+  let timestamp = date+' at '+hours+':'+minutes+AMPM;
   const newBet = new Bet({
     creator_id: req.user._id,
     creator_name: req.user.name,
     content: req.body.content,
     options: req.body.options,
+    time_posted: timestamp,
+    time_expired: req.time_expired,
+    point_value: req.point_value,
   });
   newBet.save().then((bet) => {
     //save to database
