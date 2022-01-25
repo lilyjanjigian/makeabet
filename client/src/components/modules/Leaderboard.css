@@ -1,25 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
 .Leaderboard-Title {
-  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  font-family: "Michroma", sans-serif;
+  color: #56d0ae;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .Leaderboard-Users {
   height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: start;
+  color: #56d0ae;
 }
 
 .Leaderboard-User {
-  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-family: "Michroma", sans-serif;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .Leaderboard-Container {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
+  width: 320px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+  background-color: #25363e;
+  margin-top: 50px;
 }

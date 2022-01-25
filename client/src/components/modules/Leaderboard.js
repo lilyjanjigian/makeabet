@@ -26,7 +26,12 @@ const Leaderboard = (props) => {
       <div className="Leaderboard-Users">
           {top10.map((user) => (
               <div className="Leaderboard-User">
-                  {user}
+                  <div className="Leaderboard-UserName">
+                      {user[0]}
+                    </div>
+                    <div className="Leaderboard-Points">
+                      {user[1]}
+                    </div>
               </div>
           ))}
       </div>

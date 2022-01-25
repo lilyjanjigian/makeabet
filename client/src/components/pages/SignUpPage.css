@@ -9,8 +9,8 @@
 
 .SignUpPage-Background {
   width: 100%;
-  height: calc(100vh - 200px); /* 100% minus nav bar height and padding */
-  padding-top: 150px;
+  height: calc(100vh - 200px); /* 100% minus padding */
+  padding-top: 200px;
   background-color: #25363e;
 }
 
