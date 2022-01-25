@@ -7,6 +7,9 @@ const BetSchema = new mongoose.Schema({
   creator_name: String,
   content: String,
   options: Array,
+  time_posted: String,
+  time_expired: String,
+  point_value: Number,
 });
 
 //compile model from bet schema
