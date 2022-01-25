@@ -5,11 +5,8 @@ import SignUpPage from "./pages/SignUpPage.js";
 import Profile from "./pages/Profile.js";
 import GlobalFeed from "./pages/GlobalFeed.js";
 import NavBar from "./modules/NavBar.js";
-<<<<<<< HEAD
 import SingleVote from "./modules/SingleVote.js";
 import ComposeBetTest from "./modules/ComposeBetTest.js";
-=======
->>>>>>> a13728a026d35cf7e9a3407ff29e4f5e998866ae
 
 import "../utilities.css";
 
@@ -52,32 +49,24 @@ const App = () => {
 
   return (
     <>
-      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} userName={userName}/>
+      <NavBar
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+        userId={userId}
+        userName={userName}
+      />
 
       {userId ? (
         <Router>
           <GlobalFeed path="/" />
-<<<<<<< HEAD
-          <FriendsFeed path="/friends" />
           <Profile path="/profile" userName={userName} points={userPoints} />
-          <NewBet path="/bet" />
           <NotFound default />
-          <SingleVote path="/testvote" />
-          <ComposeBetTest path="/composebet" />
-=======
-          <Profile path="/profile" userName={userName} points={userPoints}/>
-          <NotFound default />
->>>>>>> a13728a026d35cf7e9a3407ff29e4f5e998866ae
         </Router>
       ) : (
         <Router>
           <SignUpPage path="/" />
-<<<<<<< HEAD
           <NotFound default />
           <ComposeBetTest path="/composebet" />
-=======
-          <NotFound default/>
->>>>>>> a13728a026d35cf7e9a3407ff29e4f5e998866ae
         </Router>
       )}
     </>

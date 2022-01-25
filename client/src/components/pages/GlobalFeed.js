@@ -55,23 +55,12 @@ const GlobalFeed = (props) => {
   };
 
   return (
-<<<<<<< HEAD
     <div>
       <h1 className="u-textCenter"> Global Feed </h1>
       <Leaderboard />
       <ComposeBetTest />
 
       <div>{generateFeedBets()}</div>
-=======
-    <div className="GlobalFeed-Container">
-      <div className="GlobalFeed-LeaderboardContainer">
-      <Leaderboard/>
-      </div>
-      <div className="GlobalFeed-FeedContainer">
-        <NewBet/>
-        <div>{generateFeedBets()}</div>
-      </div>
->>>>>>> a13728a026d35cf7e9a3407ff29e4f5e998866ae
     </div>
   );
 };
