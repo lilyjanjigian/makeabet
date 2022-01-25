@@ -3,11 +3,8 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import SignUpPage from "./pages/SignUpPage.js";
 import Profile from "./pages/Profile.js";
-import NewBet from "./modules/ComposeBet.js"; // import new bet into feed
 import GlobalFeed from "./pages/GlobalFeed.js";
-import FriendsFeed from "./pages/FriendsFeed.js";
 import NavBar from "./modules/NavBar.js";
-import SingleVote from "./modules/SingleVote.js";
 
 import "../utilities.css";
 
@@ -57,16 +54,13 @@ const App = () => {
       {userId ? (
         <Router>
           <GlobalFeed path="/" />
-          <FriendsFeed path="/friends" />
           <Profile path="/profile" userName={userName} points={userPoints}/>
-          <NewBet path="/bet" />
           <NotFound default />
-          <SingleVote path="/testvote" />
         </Router>
       ) : (
         <Router>
           <SignUpPage path="/" />
-          <NotFound default />
+          <NotFound default/>
         </Router>
       )}
     </>

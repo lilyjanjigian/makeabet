@@ -13,9 +13,6 @@ const NavBar = (props) => {
             <Link to="/" className="NavBar-Link">
                 World
             </Link>
-            <Link to="/friends" className="NavBar-Link">
-                Friends
-            </Link>
             <Link to="/profile" className="NavBar-Link">
                 Profile
                 {/* TO-DO: MAKE THIS SAY THE USERNAME INSTEAD OF PROFILE??*/}
