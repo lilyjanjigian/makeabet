@@ -64,8 +64,7 @@ const App = () => {
         </Router>
       ) : (
         <Router>
-          <SignUpPage path="/" />
-          <NotFound default />
+          <SignUpPage default />
           <ComposeBetTest path="/composebet" />
         </Router>
       )}
