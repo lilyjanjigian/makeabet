@@ -9,9 +9,8 @@ const initialValues = {
 
 const ComposeBet = (props) => {
   const [values, setValues] = useState(initialValues); // initial state of bet is empty string
-  const [counter, setCounter] = useState(0);
-  const [currentInput, setCurrentInput] = useState("");
-  const [allInputs, setAllInputs] = useState([]);
+  const [allInputs, setAllInputs] = useState({});
+  const [optionBoxes, setOptionBoxes] = useState([]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,20 +20,39 @@ const ComposeBet = (props) => {
   //called whenever the user types in the box
 
   const handleOptionChange = (event) => {
-    setCurrentInput(event.target.value);
+    if (event.target.name in allInputs) {
+      let tempInputs = { ...allInputs };
+      tempInputs[event.target.name] = tempInputs[event.target.name] + event.target.value;
+      setAllInputs(tempInputs);
+    } else {
+      setAllInputs({
+        ...allInputs,
+        [event.target.name]: event.target.value,
+      });
+    }
+    console.log(allInputs);
   };
 
-  const handleOptionClick = () => {
-    setCounter(counter + 1);
-    console.log(counter);
+  const addInputBox = () => {
+    const indString = optionBoxes.length.toString();
+    const newBox = (
+      <div>
+        <input
+          value={allInputs[indString]}
+          name={indString}
+          onChange={handleOptionChange}
+          type="text"
+          placeholder="Add a new option"
+        />
+      </div>
+    );
+    setOptionBoxes([...optionBoxes, newBox]);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onSubmit && props.onSubmit(values);
-    setAllInputs([...allInputs, currentInput]);
-    setCurrentInput("");
-    console.log(allInputs);
+    setAllInputs({});
+    setOptionBoxes([]);
     setValues(initialValues);
   };
   return (
@@ -48,19 +66,11 @@ const ComposeBet = (props) => {
         name="bet"
         placeholder="Create a bet"
       />
-      <button type="submit" onClick={handleOptionClick}>
+      <button type="submit" onClick={addInputBox}>
         Add Option
       </button>
-      {Array.from(Array(counter)).map((c, index) => {
-        return (
-          <input
-            key={c}
-            type="text"
-            onChange={handleOptionChange}
-            placeholder="Add an option"
-          ></input>
-        );
-      })}
+      {optionBoxes}
+      <input type="text" />
       <button type="submit" onClick={handleSubmit}>
         BET
       </button>
@@ -76,8 +86,28 @@ onChange={handleChange}
 name="option1"
 label="Option 1"
 />
+
+const handleOptionClick = () => {
+    setCounter(counter + 1);
+    console.log(counter);
+  };
 <input type="text" value={values.option2} onChange={handleChange} name="option2" />
 */
+
+/**
+ * 
+ * @param {      {Array.from(Array(counter)).map((c, index) => {
+        return (
+          <input
+            key={c}
+            type="text"
+            onChange={handleOptionChange}
+            placeholder="Add an option"
+          ></input>
+        );
+      })}} props 
+ * @returns 
+ */
 
 /** New Bet is a component that will live on the feed for adding in new bets
  * Proptypes
@@ -87,15 +117,23 @@ label="Option 1"
  */
 
 const NewBet = (props) => {
+  const [values, setValues] = useState(initialValues); // initial state of bet is empty string
+  const [allInputs, setAllInputs] = useState({});
+  const [optionBoxes, setOptionBoxes] = useState([]);
+
   const addBet = (values, allInputs) => {
     const body = {
       content: values.bet,
-      options: ["option 1 hardcoded", "option 2 hardcoded"],
+      options: allInputs,
     };
+    console.log(values);
+    console.log(allInputs);
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
     post("/api/bet", body).then((bet) => {});
   };
-  return <ComposeBet defaultText="create a new bet!" onSubmit={addBet} />;
+  return (
+    <ComposeBet onSubmit={addBet} allInputs={allInputs} values={values} optionBoxes={optionBoxes} />
+  );
 };
 
 export default NewBet;
