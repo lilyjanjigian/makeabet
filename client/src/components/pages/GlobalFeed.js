@@ -39,7 +39,7 @@ const GlobalFeed = (props) => {
             creator_name={betObj.creator_name}
             content={betObj.content}
             options={betObj.options.map((opt) => (
-              <SingleVote content={opt} />
+              <SingleVote content={opt.name} />
             ))}
             time_posted={betObj.time_posted}
             time_expired={betObj.time_expired}
@@ -57,8 +57,10 @@ const GlobalFeed = (props) => {
   return (
     <div>
       <h1 className="u-textCenter"> Global Feed </h1>
+      <div className="Card-newbetcontainer">
+        <ComposeBetTest />
+      </div>
       <Leaderboard />
-      <ComposeBetTest />
 
       <div>{generateFeedBets()}</div>
     </div>
