@@ -17,6 +17,7 @@ const SingleBet = (props) => {
 
   useEffect(() => {
     console.log('you have voted', hasVoted);
+    setHasVoted(true);
    }, [hasVoted]);
 
   useEffect(() => {

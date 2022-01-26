@@ -33,6 +33,7 @@
     "react-google-login": "^5.2.1",
     "react-polls": "^1.2.0",
     "react-router-dom": "^5.2.0",
+    "react-select": "^5.2.2",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.1",
     "url-loader": "^4.1.1"
