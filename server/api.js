@@ -127,7 +127,26 @@ router.get("/votes", (req, res) => {
 });
 
 router.post("/betanswer", (req, res) => {
-  Bet.findOneAndUpdate({_id: req.body.bet_id}, {isresolved: true, answer: req.body.answer}).then(() => console.log("Answer saved"));
+  // Bet.findOneAndUpdate({_id: req.body.bet_id}, {isresolved: true, answer: req.body.answer}).then(() => console.log("Answer saved"));
+  Bet.findOne({_id: req.body.bet_id}).then(async (betObj) => {
+    betObj.isresolved = true;
+    betObj.answer = req.body.answer;
+    await betObj.save();
+    betObj.voters.map(async (voterId) => {
+      let current_vote = await Vote.findOne({creator_id : voterId, parent_id : req.body.bet_id});
+      let correct = current_vote.content === req.body.answer;
+      User.findOne({_id : voterId}).then(async (voter) => {
+        let current_points = await voter.points;
+        if (correct) {
+          voter.points = current_points + betObj.point_value;
+          await voter.save();
+        } else {
+          voter.points = current_points - betObj.point_value;
+          await voter.save();
+        }
+      })
+    })
+  })
 });
 
 // anything else falls to this "not found" case
