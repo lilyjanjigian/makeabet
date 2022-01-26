@@ -129,7 +129,7 @@ const SingleBet = (props) => {
                 <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
               )) }</div></>
             ) : (
-              <div className="Card-title">sorry, you don't have enough points to vote</div>
+              <div className="Card-subtitle">sorry, you don't have enough points to vote</div>
             )
           )
         )}

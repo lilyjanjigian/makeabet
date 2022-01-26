@@ -12,7 +12,7 @@ import "./Card.css";
 const SingleVote = (props) => {
   return (
     <div>
-      <div className="Card-subtitle"> {props.creator_name} voted {props.content} </div>
+      <div className="Card-subtitle2"> {props.creator_name} voted {props.content} </div>
     </div>
   );
 };
