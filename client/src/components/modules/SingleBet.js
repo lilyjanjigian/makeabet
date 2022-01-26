@@ -31,16 +31,24 @@ const SingleBet = (props) => {
    }, [hasVoted]);
 
   useEffect(() => {
-    
-      setInterval(() => {
-        if (checkExpiration()){
-          console.log("asking server for new votes");
-          get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
-            console.log(voteObjs);
-            setVotes(voteObjs); // an array of vote objects
-          });
-        }
-    }, 2000);
+      if (checkExpiration()){
+        console.log("asking server for votes");
+        get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
+          console.log(voteObjs);
+          setVotes(voteObjs); // an array of vote objects
+        });
+      }
+      else{
+        setInterval(() => {
+          if (!checkExpiration()){
+            console.log("asking server for new votes");
+            get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
+              console.log(voteObjs);
+              setVotes(voteObjs); // an array of vote objects
+            });
+          }
+      }, 2000);
+      }
   }, []);
 
   const generateVotes = () => {
@@ -71,7 +79,7 @@ const SingleBet = (props) => {
           <> <div> this bet has expired and votes are no longer being accepted! see all the votes: </div>
           <div>  {generateVotes()} </div> </>
         ) : (
-          hasVoted ? <> <div> you already voted! see all the votes: </div>
+          hasVoted ? <> <div> your vote was submitted! see all the votes: </div>
           <div>  {generateVotes()} </div> </>: 
           <><div> {props.options.map((opt) => (
             <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
@@ -84,7 +92,6 @@ const SingleBet = (props) => {
       ) : (
         <div>Expires on {props.time_expired}</div>
       )}
-      <div>Current Date {Date.now()} </div>
       <div>Point value: {props.point_value}</div>
       <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
     </div>
