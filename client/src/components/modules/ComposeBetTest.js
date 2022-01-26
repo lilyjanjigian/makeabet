@@ -60,7 +60,7 @@ const ComposeBetTest = () => {
   //   console.log(date);
   // }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="ComposeBetTest-form" onSubmit={handleSubmit}>
       <textarea class="ComposeBetTest-betinput"
         type="text"
         onChange={handleBetChange}
@@ -91,20 +91,19 @@ const ComposeBetTest = () => {
         </button>
         </div>
         <div className="ComposeBetTest-submissionbuttons" >
-      <label className="ComposeBetTest-expirationinput">Expires</label>
-      <DateTimePicker
+          <div>
+      <label className="ComposeBetTest-expirationinput">Expires:</label>
+      <DateTimePicker className="ComposeBetTest-datetimepicker"
         minDate = {new Date()}
         onChange={onDateTimeChange}
         value = {dateTimeValue}
       />
-      <div className="ComposeBetTest-finalbuttons" 
- >
+      </div>
         
         <PointsTest selectedValue={pointValue} handlePointChange={handlePointChange}/>
-        <button className="ComposeBetTest-button" type="submit">
+        <button className="ComposeBetTest-betbutton" type="submit">
           BET
         </button>
-      </div>
       </div>
     </form>
   );

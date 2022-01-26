@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
+import "./ComposeBetTest.css";
+
 
 
 let dict = [];
@@ -19,7 +21,7 @@ const PointsTest = (props) => {
 
   return (
     <div >
-      <Select
+      <Select className="ComposeBetTest-pointvalue"
         defaultValue={props.selectedValue}
         onChange={props.handlePointChange}
         options={options}
