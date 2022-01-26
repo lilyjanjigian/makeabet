@@ -60,7 +60,7 @@ router.get("/users", (req, res) => {
 
 // get all the created bet documents in database (search for name matching logged in user)
 router.get("/createdbets", (req, res) => {
-  Bet.find({ $match: { creator_name: req.user.name } }).then((createdbets) =>
+  Bet.find({ creator_name:  req.user.name }).then((createdbets) =>
     res.send(createdbets)
   );
 });
@@ -105,21 +105,8 @@ router.post("/vote", (req, res) => {
 
 router.post("/points", (req, res) => {
   console.log('updating points on user');
-  User.findAndModify(
-    {
-      query: { _id: req.user._id},
-      update: { $inc: { points: 25 } },
-      upsert: true,
-      function(err) {
-        if (err) { 
-            throw err;
-        }
-        else { 
-            console.log("updated!");
-        }
-    }}
- );
-})
+  User.updateMany({},{ $inc: { points: 25 } },).then(() => console.log("point update is savved"));
+  });
 
 
 router.get("/votes", (req, res) => {
