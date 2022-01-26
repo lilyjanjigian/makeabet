@@ -23,7 +23,7 @@ const SingleBet = (props) => {
   useEffect(() => {
       setInterval(() => {
       console.log("asking server for new votes");
-      get("/api/votes", {parent: props.content}).then((voteObjs) => {
+      get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
         console.log(voteObjs);
         setVotes(voteObjs); // an array of vote objects
       });
@@ -81,6 +81,6 @@ const SingleBet = (props) => {
       <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
     </div>
   );
-  };
+};
 
 export default SingleBet;
