@@ -15,6 +15,7 @@ const ComposeBetTest = () => {
 
   const handlePointChange = (event) => {
     setPointValue(event.value);
+    console.log(`Option selected:`, pointValue);}
 
   let handleChange = (i, e) => {
     let newFormValues = [...formValues];
@@ -39,14 +40,20 @@ const ComposeBetTest = () => {
       options: formValues,
       time_expired: new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(dateTimeVal),
     };
+    console.log("DATETIMEVAL", dateTimeVal)
+    console.log('VALUE', value);
+    console.log("FORMVALUES", formValues);
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
     post("/api/bet", body).then((bet) => {});
   };
   const handleSubmit = (event) => {
+    console.log("made it to 0")
     event.preventDefault();
     addBet(value, pointValue, formValues, dateTimeValue);
     setValue("");
     setPointValue(null);
+    console.log("setting point value")
+    console.log(pointValue)
     setFormValues([{ name: "" }]);
   };
   // const onCalendarChange = (date) => {
@@ -100,6 +107,6 @@ const ComposeBetTest = () => {
       </div>
     </form>
   );
-};}
+};
 
 export default ComposeBetTest;
