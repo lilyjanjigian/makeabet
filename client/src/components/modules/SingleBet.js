@@ -16,6 +16,16 @@ const SingleBet = (props) => {
   const [hasVoted, setHasVoted] = useState(false)
   const [votes, setVotes] = useState([]);
 
+  const checkExpiration = () => {
+    let currentTime = Date.now();
+    if (currentTime > Date.parse(props.time_expired)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   useEffect(() => {
     console.log('you have voted', hasVoted);
    }, [hasVoted]);
@@ -23,11 +33,13 @@ const SingleBet = (props) => {
   useEffect(() => {
     
       setInterval(() => {
-      console.log("asking server for new votes");
-      get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
-        console.log(voteObjs);
-        setVotes(voteObjs); // an array of vote objects
-      });
+        if (checkExpiration()){
+          console.log("asking server for new votes");
+          get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
+            console.log(voteObjs);
+            setVotes(voteObjs); // an array of vote objects
+          });
+        }
     }, 2000);
   }, []);
 
@@ -46,18 +58,6 @@ const SingleBet = (props) => {
     return totalVotes;
   };
 
-  const theTime = Date.now();
-
-  const checkExpiration = () => {
-    let currentTime = Date.now();
-    if (currentTime > Date.parse(props.time_expired)) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
   return (
     <div className="Card-container">
       <div className="u-bold" className="Card-title">
@@ -67,17 +67,24 @@ const SingleBet = (props) => {
       <div className="Card-betcontent"> {props.content} </div>
       <div className="Card-options"></div>
       <div>
-        {hasVoted ? <> <div> you already voted! see all the votes: </div>
-        <div>  {generateVotes()} </div> </>: 
-        <><div> {props.options.map((opt) => (
+        {checkExpiration() ? (
+          <> <div> this bet has expired and votes are no longer being accepted! see all the votes: </div>
+          <div>  {generateVotes()} </div> </>
+        ) : (
+          hasVoted ? <> <div> you already voted! see all the votes: </div>
+          <div>  {generateVotes()} </div> </>: 
+          <><div> {props.options.map((opt) => (
             <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
           )) }</div></>
-        }
+        )}
       </div>
       <div>Posted on {props.time_posted} </div>
-      <div>Expires on {props.time_expired}</div>
+      {checkExpiration() ? (
+        <div>Expired on {props.time_expired}</div>
+      ) : (
+        <div>Expires on {props.time_expired}</div>
+      )}
       <div>Current Date {Date.now()} </div>
-      <div> {checkExpiration() ? "Expired" : "Not expired"} </div>
       <div>Point value: {props.point_value}</div>
       <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
     </div>
