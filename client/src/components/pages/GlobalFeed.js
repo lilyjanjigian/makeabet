@@ -41,6 +41,7 @@ const GlobalFeed = (props) => {
             point_value={betObj.point_value}
             isresolved={betObj.isresolved}
             voters={betObj.voters}
+            answer={betObj.answer}
             userId={props.userId}
             userPoints={props.points}
           />

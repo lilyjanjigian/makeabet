@@ -3,6 +3,7 @@ import "./Card.css";
 import SingleOption from "./SingleOption.js";
 import { get, post } from "../../utilities.js";
 import SingleVote from "./SingleVote.js";
+import Resolution from "./Resolution.js";
 
 /*
 //SingleBet is a component that renders the creator and the content of a bet
@@ -105,7 +106,16 @@ const SingleBet = (props) => {
         {checkExpiration() ? (
           <> <div> this bet has expired and votes are no longer being accepted! see all the votes: </div>
           <div>  {generateVotes()} </div>
-</>
+          {props.isresolved ? (
+            <div>This bet has been resolved, answer was {props.answer}</div>
+           ) : (<>
+            <div>Bet not yet resolved. Resolve below:</div>
+            <div>
+            {props.options.map((opt) => <Resolution bet_id={props.bet_id} content={opt.name}/>)}
+            </div>
+            </>
+           )}
+          </>   
         ) : (
           hasVoted ? (<> <div> your vote was submitted! see all the votes: </div>
           <div>  {generateVotes()} </div> 

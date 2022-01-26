@@ -76,6 +76,7 @@ router.post("/bet", (req, res) => {
     point_value: req.body.point_value,
     isresolved: false,
     voters: [],
+    answer: "",
   });
   newBet.save().then((bet) => {
     //save to database
@@ -103,6 +104,10 @@ router.post("/vote", (req, res) => {
 
 router.get("/votes", (req, res) => {
   Vote.find({parent_id:req.query.parent_id}).then((votes) => res.send(votes));
+});
+
+router.post("/betanswer", (req, res) => {
+  Bet.findOneAndUpdate({_id: req.body.bet_id}, {isresolved: true, answer: req.body.answer}).then(() => console.log("Answer saved"));
 });
 
 // anything else falls to this "not found" case

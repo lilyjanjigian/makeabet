@@ -12,6 +12,7 @@ const BetSchema = new mongoose.Schema({
   point_value: Number,
   isresolved: Boolean,
   voters: Array,
+  answer: String,
 });
 
 //compile model from bet schema
