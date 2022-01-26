@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { get, post } from "../../utilities.js";
+import "./Card.css";
 
 /* component for rendering when a user places their vote on the bet 
 
@@ -11,7 +12,7 @@ import { get, post } from "../../utilities.js";
 const SingleVote = (props) => {
   return (
     <div>
-      <div> {props.creator_name} voted {props.content} </div>
+      <div className="Card-subtitle"> {props.creator_name} voted {props.content} </div>
     </div>
   );
 };

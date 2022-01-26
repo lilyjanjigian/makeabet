@@ -89,27 +89,30 @@ const SingleBet = (props) => {
         
       }); //map takes in a function, which we will apply to every item in the array
     } else {
-      totalVotes = <div> no votes! </div>;
+      totalVotes = <div className="Card-subtitle"> no votes </div>;
     }
     return totalVotes;
   };
 
   return (
     <div className="Card-container">
+      <div className="Card-titleline">
       <div className="u-bold" className="Card-title">
         {props.creator_name}
       </div>
-      <div>  Bet id: {props.bet_id} </div>
+      <div className="Card-title"> Posted on {props.time_posted} </div>
+      </div>
+      
       <div className="Card-betcontent"> {props.content} </div>
       <div className="Card-options"></div>
       <div>
         {checkExpiration() ? (
-          <> <div> this bet has expired and votes are no longer being accepted! see all the votes: </div>
+          <> <div className="Card-subtitle"> bet expired. see votes: </div>
           <div>  {generateVotes()} </div>
           {props.isresolved ? (
-            <div>This bet has been resolved, answer was {props.answer}</div>
+            <div className="Card-subtitle"> bet resolved. answer was {props.answer}</div>
            ) : (<>
-            <div>Bet not yet resolved. Resolve below:</div>
+            <div className="Card-subtitle"> bet not resolved. resolve below:</div>
             <div>
             {props.options.map((opt) => <Resolution bet_id={props.bet_id} content={opt.name}/>)}
             </div>
@@ -117,7 +120,7 @@ const SingleBet = (props) => {
            )}
           </>   
         ) : (
-          hasVoted ? (<> <div> your vote was submitted! see all the votes: </div>
+          hasVoted ? (<> <div className="Card-subtitle"> vote submitted. see votes: </div>
           <div>  {generateVotes()} </div> 
           {/* <div> All voters: {voters} </div> */}
           </> ) : (
@@ -126,19 +129,23 @@ const SingleBet = (props) => {
                 <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
               )) }</div></>
             ) : (
-              <div>Sorry, you don't have enough points to vote</div>
+              <div className="Card-title">sorry, you don't have enough points to vote</div>
             )
           )
         )}
       </div>
-      <div>Posted on {props.time_posted} </div>
+      
+      <div className="Card-subtitle">Point value: {props.point_value}</div>
+      
+      
+      <div className="Card-titleline">
+      <div className="Card-title"> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
       {checkExpiration() ? (
-        <div>Expired on {props.time_expired}</div>
+        <div className="Card-title">Expired on {props.time_expired}</div>
       ) : (
-        <div>Expires on {props.time_expired}</div>
+        <div className="Card-title">Expires on {props.time_expired}</div>
       )}
-      <div>Point value: {props.point_value}</div>
-      <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
+      </div>
     </div>
   );
 };

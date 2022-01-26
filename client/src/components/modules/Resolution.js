@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { get, post } from "../../utilities.js";
+import "./Card.css";
 
 const Resolution = (props) => {
   const handleEvent = (event) => {
@@ -12,7 +13,7 @@ const Resolution = (props) => {
   };
   return (
     <div>
-      <button onClick={handleEvent}>
+      <button onClick={handleEvent} className="Card-Vote">
         {props.content}
       </button>
     </div>

@@ -22,7 +22,7 @@ const SingleOption = (props) => {
   };
   return (
     <div>
-      <button onClick={handleEvent}>
+      <button onClick={handleEvent} className="Card-Vote">
         {props.content}
       </button>
     </div>

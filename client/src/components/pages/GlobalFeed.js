@@ -48,7 +48,7 @@ const GlobalFeed = (props) => {
         );
       }); //map takes in a function, which we will apply to every item in the array
     } else {
-      feedBets = <div> no bets! </div>;
+      feedBets = <div> no bets </div>;
     }
     return feedBets;
   };
