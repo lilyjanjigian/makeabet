@@ -80,7 +80,7 @@ const ComposeBetTest = () => {
             onChange={(e) => handleChange(index, e)}
           />
           {index ? (
-            <button type="button" className="button remove" onClick={() => removeFormFields(index)}>
+            <button type="button" className="ComposeBetTest-button" onClick={() => removeFormFields(index)}>
               Remove
             </button>
           ) : null}
@@ -93,11 +93,11 @@ const ComposeBetTest = () => {
         value = {dateTimeValue}
       />
       <div className="button-section">
-        <button className="ComposeBetTest-buttonadd" type="button" onClick={() => addFormFields()}>
+        <button className="ComposeBetTest-button" type="button" onClick={() => addFormFields()}>
           Add Option
         </button>
         <PointsTest selectedValue={pointValue} handlePointChange={handlePointChange}/>
-        <button className="button submit" type="submit">
+        <button className="ComposeBetTest-button" type="submit">
           BET
         </button>
       </div>

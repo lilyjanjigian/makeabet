@@ -35,7 +35,7 @@ const Profile = (props) => {
     setInterval(() => {
     console.log(`user points: ${props.points}`);
     console.log(`user id: ${props.userId}`);
-    post("/api/points").then(console.log('done updating points'))}, 3000); }, []);
+    post("/api/points").then(console.log('done updating points'))}, 86400); }, []);
 
   
   return (
