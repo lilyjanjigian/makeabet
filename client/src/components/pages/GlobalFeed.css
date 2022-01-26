@@ -4,10 +4,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: #25363e;
+  background-color: #156064;
 }
 
 .GlobalFeed-FeedContainer {
   margin-left: 320px;
-  background-color: #25363e;
+  background-color: #156064;
 }

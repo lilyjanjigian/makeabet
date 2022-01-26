@@ -105,7 +105,7 @@ const SingleBet = (props) => {
           {/* <div> All voters: {voters} </div> */}
           </>: 
           <><div> {props.options.map((opt) => (
-            <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
+            <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted}  parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
           )) }</div></>
         )}
       </div>
@@ -116,12 +116,7 @@ const SingleBet = (props) => {
         <div>Expires on {props.time_expired}</div>
       )}
       <div>Point value: {props.point_value}</div>
-      {checkExpiration() ? (
-        <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
-      ) : (
-        <></>
-      )} {/* Only displays whether or not bet is resolved after bet has expired */} 
-      
+      <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
     </div>
   );
 };

@@ -5,9 +5,9 @@ import NavBar from "../modules/NavBar.js";
 const SignUpPage = (props) => {
   return (
     <>
-      <div className="SignUpPage-Background">
-        <div className="SignUpPage-Title">Predict the future</div>
-        <div className="SignUpPage-Subtitle1">Betting just got better</div>
+      <div className="SignUpPage-body">
+        <div className="SignUpPage-h1">Predict the future</div>
+        <div className="SignUpPage-a">Betting just got better</div>
         <div className="SignUpPage-Subtitle2">Log in above to start playing</div>
       </div>
     </>

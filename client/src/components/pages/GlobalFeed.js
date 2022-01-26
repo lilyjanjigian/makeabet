@@ -53,7 +53,7 @@ const GlobalFeed = (props) => {
   };
 
   return (
-    <div>
+    <div className="GlobalFeed-Container">
       <div className="Card-newbetcontainer">
         <ComposeBetTest />
       </div>
