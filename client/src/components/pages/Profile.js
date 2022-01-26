@@ -22,16 +22,6 @@ const Profile = (props) => {
     });
   }, [props.userName]);
 
-  // useEffect(() => {
-  //   document.title = "Profile";
-  //   get("/api/globalbets").then((betObjs) => {
-  //     let usersBets = betObjs.filter((betObj) => {
-  //       betObj.creator_id === props.userId
-  //     })
-  //     setBets(usersBets);
-  //   });
-  // }, [])
-
   return (
     <>
     <div className="Profile-TopBox">

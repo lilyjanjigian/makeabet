@@ -6,7 +6,7 @@
   font-size: 75px;
   line-height: 91px;
   text-align: center;
-  color: #56d0ae;
+  color: #0077b6;
   font-family: "Michroma", sans-serif;
 }
 
@@ -14,7 +14,7 @@
   width: 100%;
   height: calc(100vh - 200px); /* 100% minus padding */
   padding-top: 200px;
-  background-color: #25363e;
+  background-color: #03045e;
 }
 
 .SignUpPage-Subtitle1 {
@@ -24,7 +24,7 @@
   line-height: 28px;
   text-align: center;
   margin-top: 25px;
-  color: #96fb77;
+  color: #48cae4;
   font-family: "Michroma", sans-serif;
 }
 
@@ -35,6 +35,45 @@
   line-height: 28px;
   text-align: center;
   margin-top: 20px;
-  color: #fbf977;
+  color: #caf0f8;
   font-family: "Michroma", sans-serif;
+}
+
+.SignUpPage-body {
+  background-color: #03045e;
+  color: #48cae4;
+  margin: 0;
+  padding: 100 px;
+  align-items: center;
+  justify-items: center;
+}
+
+.SignUpPage-h1 {
+  margin: 0;
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: 150px;
+  z-index: 1;
+  font-family: "Michroma", sans-serif;
+  font-size: 100px;
+  text-transform: uppercase;
+  animation: glow 3s ease-in-out infinite alternate;
+  text-align: center;
+}
+.SignUpPage-a {
+  font-family: "Michroma", sans-serif;
+  color: #4db1bc;
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+  justify-self: center;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px #2d9da9;
+  }
+  to {
+    text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+  }
 }
