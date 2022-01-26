@@ -16,6 +16,7 @@ const SingleBet = (props) => {
   const [newVoter, setNewVoter] = useState(null);
   const [hasVoted, setHasVoted] = useState(false);
   const [votes, setVotes] = useState([]);
+  const [enoughPoints, setEnoughPoints] = useState(true);
 
   const checkExpiration = () => {
     let currentTime = Date.now();
@@ -30,6 +31,12 @@ const SingleBet = (props) => {
   useEffect(() => {
     console.log('you have voted', hasVoted);
    }, [hasVoted]);
+
+  useEffect(() => {
+    if (props.userPoints < props.point_value) {
+      setEnoughPoints(false);
+    }
+  }, [enoughPoints]);
 
   useEffect(() => {
       if (checkExpiration()){
@@ -100,13 +107,18 @@ const SingleBet = (props) => {
           <div>  {generateVotes()} </div>
 </>
         ) : (
-          hasVoted ? <> <div> your vote was submitted! see all the votes: </div>
+          hasVoted ? (<> <div> your vote was submitted! see all the votes: </div>
           <div>  {generateVotes()} </div> 
           {/* <div> All voters: {voters} </div> */}
-          </>: 
-          <><div> {props.options.map((opt) => (
-            <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted}  parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
-          )) }</div></>
+          </> ) : (
+            enoughPoints ? (
+              <><div> {props.options.map((opt) => (
+                <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
+              )) }</div></>
+            ) : (
+              <div>Sorry, you don't have enough points to vote</div>
+            )
+          )
         )}
       </div>
       <div>Posted on {props.time_posted} </div>

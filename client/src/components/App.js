@@ -40,6 +40,7 @@ const App = () => {
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
       setUserName(user.name);
+      setUserPoints(user.points);
       post("/api/initsocket", { socketid: socket.id });
     });
   };
