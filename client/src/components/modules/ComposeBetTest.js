@@ -49,7 +49,6 @@ const ComposeBetTest = () => {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <label>Bet</label>
       <input
         type="text"
         onChange={handleBetChange}
@@ -60,13 +59,12 @@ const ComposeBetTest = () => {
 
       {formValues.map((element, index) => (
         <div className="form-inline" key={index}>
-          <label>Options</label>
+          <label>Option</label>
           <input
             type="text"
             name="name"
             value={element.name || ""}
             onChange={(e) => handleChange(index, e)}
-            placeholder='Add a new option'
           />
           {index ? (
             <button type="button" className="button remove" onClick={() => removeFormFields(index)}>

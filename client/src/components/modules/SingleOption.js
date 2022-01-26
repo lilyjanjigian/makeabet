@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { get, post } from "../../utilities.js";
 
 /* component for rendering when a user places their vote on the bet 
@@ -9,7 +9,7 @@ import { get, post } from "../../utilities.js";
 */
 
 const SingleOption = (props) => {
-
+  const [voted, setVoted] = useState(false);
   const handleEvent = (event) => {
     console.log("button clicked for" + event);
     props.setHasVoted(true)
@@ -19,7 +19,6 @@ const SingleOption = (props) => {
     }
     post("/api/vote", body).then((vote) => {})
   };
-
   return (
     <div>
       <button onClick={handleEvent}>
