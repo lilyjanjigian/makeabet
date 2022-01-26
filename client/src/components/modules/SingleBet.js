@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "@reach/router";
 import "./Card.css";
 import SingleOption from "./SingleOption.js";
 import { get, post } from "../../utilities.js";
@@ -22,12 +21,9 @@ const SingleBet = (props) => {
    }, [hasVoted]);
 
   useEffect(() => {
-
-
-    setInterval(() => {
-      console.log("checking if time has expired ", 'status expiration is', status_expiration);
-      compareTime();
-      get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
+      setInterval(() => {
+      console.log("asking server for new votes");
+      get("/api/votes", {parent: props.content}).then((voteObjs) => {
         console.log(voteObjs);
         setVotes(voteObjs); // an array of vote objects
       });
@@ -49,7 +45,7 @@ const SingleBet = (props) => {
     return totalVotes;
   };
 
-  const theTime = new Date()
+  const theTime = new Date();
 
   let status_expiration = ""
   const compareTime = () => {
@@ -59,7 +55,7 @@ const SingleBet = (props) => {
     }
     else {
       status_expiration="Has Not Expired"    }
-  }
+  };
 
   return (
     <div className="Card-container">
@@ -76,9 +72,6 @@ const SingleBet = (props) => {
             <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
           )) }</div></>
         }
- 
- 
-
       </div>
       <div>Posted on {props.time_posted} </div>
       <div>Expires on {props.time_expired}</div>
@@ -88,6 +81,6 @@ const SingleBet = (props) => {
       <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
     </div>
   );
-  }
+  };
 
 export default SingleBet;

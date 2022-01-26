@@ -17,7 +17,6 @@ const GlobalFeed = (props) => {
 
     setInterval(() => {
       console.log("asking server for new bets");
-
       get("/api/globalbets").then((betObjs) => {
         let reversedBetObjs = betObjs.reverse();
         setBets(reversedBetObjs); // an array of bet objects
