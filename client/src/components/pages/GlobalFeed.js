@@ -1,4 +1,3 @@
-import { process_params } from "express/lib/router";
 import React, { useState, useEffect } from "react";
 import { get } from "../../utilities.js";
 import SingleBet from "../modules/SingleBet.js";
@@ -63,11 +62,3 @@ const GlobalFeed = (props) => {
 };
 
 export default GlobalFeed;
-
-/*
-  useEffect(() => {
-    makeFeed;
-  });
-
-  const makeFeed = (bets) => {
-    */

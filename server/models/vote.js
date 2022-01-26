@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const VoteSchema = new mongoose.Schema({
   creator_id: String,
   creator_name: String,
-  parent: String,
+  parent_content: String,
+  parent_id: String,
   content: String,
 });
 
