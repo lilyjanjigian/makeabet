@@ -49,6 +49,7 @@ router.post("/initsocket", (req, res) => {
 
 // get all the bet documents in database
 router.get("/globalbets", (req, res) => {
+
   Bet.find({}).then((bets) => res.send(bets));
 });
 
@@ -100,6 +101,25 @@ router.post("/vote", (req, res) => {
   });
   
 });
+
+router.post("/points", (req, res) => {
+  console.log('updating points on user');
+  User.findAndModify(
+    {
+      query: { _id: req.user._id},
+      update: { $inc: { points: 25 } },
+      upsert: true,
+      function(err) {
+        if (err) { 
+            throw err;
+        }
+        else { 
+            console.log("updated!");
+        }
+    }}
+ );
+})
+
 
 router.get("/votes", (req, res) => {
   Vote.find({parent_id:req.query.parent_id}).then((votes) => res.send(votes));
