@@ -69,7 +69,7 @@ const SingleBet = (props) => {
       <div>Posted on {props.time_posted} </div>
       <div>Expires on {props.time_expired}</div>
       <div>Point value: {props.point_value}</div>
-      <div> Resolved? {props.isresolved ? "true" : "false"} </div>
+      <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
     </div>
   );
   }
