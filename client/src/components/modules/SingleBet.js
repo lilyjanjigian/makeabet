@@ -30,7 +30,6 @@ const SingleBet = (props) => {
   }
 
   useEffect(() => {
-    console.log('you have voted', hasVoted);
    }, [hasVoted]);
 
   useEffect(() => {
@@ -41,18 +40,14 @@ const SingleBet = (props) => {
 
   useEffect(() => {
       if (checkExpiration()){
-        console.log("asking server for votes");
         get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
-          console.log(voteObjs);
           setVotes(voteObjs); // an array of vote objects
         });
       }
       else{
         setInterval(() => {
           if (!checkExpiration()){
-            console.log("asking server for new votes");
             get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
-              console.log(voteObjs);
               setVotes(voteObjs); // an array of vote objects
 
             });
@@ -82,7 +77,6 @@ const SingleBet = (props) => {
     if (votes.length !== 0) {
       totalVotes = votes.map((voteObj) => {
       
-        console.log(`vote obj: ${JSON.stringify(voteObj)}`);
         return (
           <SingleVote creator_name = {voteObj.creator_name} content={voteObj.content} />
         );

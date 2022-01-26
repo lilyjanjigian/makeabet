@@ -13,12 +13,10 @@ const Profile = (props) => {
   useEffect(() => {
         get("/api/createdbets", {creator_name: props.userName}).then((betObjs) => {
           setCreatedBets(betObjs); // an array of vote objects
-          console.log(createdBets);
         })}, []);
 
 
   useEffect(() => {
-    console.log(`user: ${props.userName}`)
     get("/api/users").then((userObjs) => {
       let sortedUsers = userObjs.sort((a, b) =>
         a.points < b.points ? 1 : a.points === b.points ? (a.name > b.name ? 1 : -1) : -1
@@ -33,9 +31,7 @@ const Profile = (props) => {
   
   useEffect(() => {
     setInterval(() => {
-    console.log(`user points: ${props.points}`);
-    console.log(`user id: ${props.userId}`);
-    post("/api/points").then(console.log('done updating points'))}, 86400); }, []);
+    post("/api/points").then(console.log('done updating points'))}, 86400000); }, []);
 
   
   return (

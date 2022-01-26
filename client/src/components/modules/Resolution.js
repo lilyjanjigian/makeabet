@@ -4,7 +4,6 @@ import "./Card.css";
 
 const Resolution = (props) => {
   const handleEvent = (event) => {
-    console.log("button clicked for" + event);
     const body = {
       bet_id: props.bet_id,
       answer: props.content,
