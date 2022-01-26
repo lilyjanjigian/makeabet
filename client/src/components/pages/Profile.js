@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SideBar from "../modules/SideBar.js";
 import { get, post } from "../../utilities.js";
+import "./Profile.css"
 //will spice up later
 
 const Profile = (props) => {
@@ -31,7 +32,7 @@ const Profile = (props) => {
 
   return (
     <>
-      <div>
+      <div className="Profile-section">
         <h1> Profile page! ~to come~ </h1>
         <SideBar userName={props.userName} points={props.points} ranking={userRanking} />
         <div>Created by you: </div>
