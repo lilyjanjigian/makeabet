@@ -46,17 +46,17 @@ const SingleBet = (props) => {
     return totalVotes;
   };
 
-  const theTime = new Date();
+  const theTime = Date.now();
 
-  let status_expiration = ""
-  const compareTime = () => {
-    if (theTime > props.time_expired) {
-      status_expiration=
-      'Has Expired'
+  const checkExpiration = () => {
+    let currentTime = Date.now();
+    if (currentTime > Date.parse(props.time_expired)) {
+      return true;
     }
     else {
-      status_expiration="Has Not Expired"    }
-  };
+      return false;
+    }
+  }
 
   return (
     <div className="Card-container">
@@ -76,8 +76,8 @@ const SingleBet = (props) => {
       </div>
       <div>Posted on {props.time_posted} </div>
       <div>Expires on {props.time_expired}</div>
-      <div>Current Date {JSON.stringify(theTime)} </div>
-      <div> {status_expiration} </div>
+      <div>Current Date {Date.now()} </div>
+      <div> {checkExpiration() ? "Expired" : "Not expired"} </div>
       <div>Point value: {props.point_value}</div>
       <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
     </div>
