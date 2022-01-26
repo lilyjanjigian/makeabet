@@ -21,9 +21,17 @@
 }
 
 .Card-subtitle {
-  font-family: "Juma", sans-serif;
+  font-family: "Jura", sans-serif;
   text-align: center;
   font-size: 20px;
+  color: #03045e;
+  margin-top: 5px;
+}
+
+.Card-subtitle2 {
+  font-family: "Jura", sans-serif;
+  text-align: center;
+  font-size: 15px;
   color: #03045e;
 }
 
@@ -60,8 +68,9 @@
   justify-content: center;
 }
 .Card-Vote {
+  width: 100%;
   display: flex;
-  font-family: "Juma", sans-serif;
+  font-family: "Jura", sans-serif;
   width: calc(100vh-100px);
   justify-content: space-evenly;
   background-color: #03045e; /* Green */
@@ -70,5 +79,6 @@
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
+  margin-bottom: 5px;
 }
