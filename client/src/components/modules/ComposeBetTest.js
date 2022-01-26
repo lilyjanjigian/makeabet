@@ -65,6 +65,7 @@ const ComposeBetTest = () => {
           <input
             type="text"
             name="name"
+            placeholder = "Add option" index
             value={element.name || ""}
             onChange={(e) => handleChange(index, e)}
           />
@@ -81,9 +82,13 @@ const ComposeBetTest = () => {
         onChange={onDateTimeChange}
         value = {dateTimeValue}
       />
+<<<<<<< HEAD
+=======
+
+>>>>>>> b9cc62456a0be8fc7dd18b3204ce5ee28026f980
       <div className="button-section">
         <button className="ComposeBetTest-buttonadd" type="button" onClick={() => addFormFields()}>
-          Add an Option
+          Add Option
         </button>
         <PointsTest />
         <button className="button submit" type="submit">
