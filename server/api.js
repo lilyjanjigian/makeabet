@@ -92,9 +92,13 @@ router.post("/vote", (req, res) => {
     parent_id: req.body.parent_id,
     content: req.body.content,
   });
-  newVote.save().then((vote) => {
+  newVote.save().then(async (vote) => {
     console.log("vote is saved");
+    let parent_bet = await Bet.findOne({_id: req.body.parent_id});
+    parent_bet.voters = [...parent_bet.voters, req.user._id];
+    await parent_bet.save();
   });
+  
 });
 
 router.get("/votes", (req, res) => {
