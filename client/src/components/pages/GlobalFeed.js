@@ -40,7 +40,10 @@ const GlobalFeed = (props) => {
             time_expired={betObj.time_expired}
             point_value={betObj.point_value}
             isresolved={betObj.isresolved}
+<<<<<<< HEAD
             userPoints={props.points}
+=======
+>>>>>>> 0d293ad7e1e8158189a4fe1e4fb5eb6ab5168275
             voters={betObj.voters}
           />
         );

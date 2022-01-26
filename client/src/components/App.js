@@ -62,7 +62,7 @@ const App = () => {
       {userId ? (
         <Router>
           <GlobalFeed path="/" points={userPoints}/>
-          <Profile path="/profile" userName={userName} points={userPoints} />
+          <Profile path="/profile" userName={userName} points={userPoints} userId={userId}/>
           <NotFound default />
           <PointsTest path="/points" />
         </Router>

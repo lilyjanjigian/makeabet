@@ -75,6 +75,7 @@ router.post("/bet", (req, res) => {
     time_expired: req.body.time_expired,
     point_value: req.body.point_value,
     isresolved: false,
+    voters: [],
   });
   newBet.save().then((bet) => {
     //save to database

@@ -5,17 +5,9 @@ import "./Profile.css"
 //will spice up later
 
 const Profile = (props) => {
-  /*
-  const [bets, setBets] = useState([]);
-  useEffect(() => {
-    document.title = "Profile";
-    get("/api/createdbets").then((betObjs) => {
-      setBets(betObjs);
-    });
-  }, []);
-  */
 
   const [userRanking, setUserRanking] = useState(0);
+  // const [bets, setBets] = useState([]);
 
   useEffect(() => {
     console.log(`user: ${props.userName}`)
@@ -30,13 +22,36 @@ const Profile = (props) => {
     });
   }, [props.userName]);
 
+  // useEffect(() => {
+  //   document.title = "Profile";
+  //   get("/api/globalbets").then((betObjs) => {
+  //     let usersBets = betObjs.filter((betObj) => {
+  //       betObj.creator_id === props.userId
+  //     })
+  //     setBets(usersBets);
+  //   });
+  // }, [])
+
   return (
     <>
-      <div className="Profile-section">
-        <h1> Profile page! ~to come~ </h1>
-        <SideBar userName={props.userName} points={props.points} ranking={userRanking} />
-        <div>Created by you: </div>
+    <div className="Profile-TopBox">
+      <div className="Profile-UserName">
+        {props.userName}
+        {/* <SideBar userName={props.userName} points={props.points} ranking={userRanking} /> */}
       </div>
+      <div className="Profile-Points">
+        points: {props.points}
+      </div>
+      <div className="Profile-Ranking">
+        world ranking: {userRanking}
+      </div>
+    </div>
+    {/* <div className="Profile-BetBox">
+        <div className="Profile-Subtitle">created by you</div>
+        {bets.map((betObj) => {
+          betObj.content
+        })}
+      </div> */}
     </>
   );
 };
