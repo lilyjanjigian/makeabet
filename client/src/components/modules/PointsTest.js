@@ -11,27 +11,17 @@ for (let i = 0; i<101; i++) {
     });
 
 }
-/*
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
-*/
+
  
 const options = dict
-const PointsTest = () => {
+const PointsTest = (props) => {
   const [selectedOption, setSelectedOption] = useState(null);
-
-  useEffect(() => {
-    console.log("page is working")
-  }, [])
 
   return (
     <div >
       <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        defaultValue={props.selectedValue}
+        onChange={props.handlePointChange}
         options={options}
         placeholder='Select Point Value'
       />
@@ -40,3 +30,7 @@ const PointsTest = () => {
 }
 
 export default PointsTest;
+
+/*        defaultValue={selectedOption}
+        onChange={setSelectedOption}
+        */

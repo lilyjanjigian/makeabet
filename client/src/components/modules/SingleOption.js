@@ -15,7 +15,8 @@ const SingleOption = (props) => {
     props.setHasVoted(true)
     const body = {
       content: props.content,
-      parent: props.parent
+      parent_content: props.parent_content,
+      parent_id: props.parent_id
     }
     post("/api/vote", body).then((vote) => {})
   };

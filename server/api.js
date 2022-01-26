@@ -73,7 +73,7 @@ router.post("/bet", (req, res) => {
     options: req.body.options,
     time_posted: new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(new Date()),
     time_expired: req.body.time_expired,
-    point_value: req.point_value,
+    point_value: req.body.point_value,
     isresolved: false,
   });
   newBet.save().then((bet) => {
@@ -83,10 +83,12 @@ router.post("/bet", (req, res) => {
 });
 
 router.post("/vote", (req, res) => {
+  console.log(req.user, req.body)
   const newVote = new Vote({
     creator_id: req.user._id,
     creator_name: req.user.name,
-    parent: req.body.parent,
+    parent_content: req.body.parent_content,
+    parent_id: req.body.parent_id,
     content: req.body.content,
   });
   newVote.save().then((vote) => {
@@ -95,7 +97,7 @@ router.post("/vote", (req, res) => {
 });
 
 router.get("/votes", (req, res) => {
-  Vote.find({parent: req.query.parent }).then((votes) => res.send(votes));
+  Vote.find({parent_id:req.query.parent_id}).then((votes) => res.send(votes));
 });
 
 // anything else falls to this "not found" case
