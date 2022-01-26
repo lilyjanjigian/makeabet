@@ -6,6 +6,8 @@ import Profile from "./pages/Profile.js";
 import GlobalFeed from "./pages/GlobalFeed.js";
 import NavBar from "./modules/NavBar.js";
 import ComposeBetTest from "./modules/ComposeBetTest.js";
+import PointsTest from "./modules/PointsTest.js";
+
 
 import "../utilities.css";
 
@@ -60,11 +62,17 @@ const App = () => {
           <GlobalFeed path="/" />
           <Profile path="/profile" userName={userName} points={userPoints} />
           <NotFound default />
+          <PointsTest path="/points" />
         </Router>
       ) : (
         <Router>
           <SignUpPage default />
+<<<<<<< Updated upstream
           <ComposeBetTest path="composebet"/>
+=======
+          <ComposeBetTest path="/composebet" />
+          <PointsTest path="/points"/>
+>>>>>>> Stashed changes
         </Router>
       )}
     </>

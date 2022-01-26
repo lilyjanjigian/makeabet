@@ -34,6 +34,7 @@ const GlobalFeed = (props) => {
         // return <SingleBet creator_id={betObj.creator_id} creator_name={betObj.creator_name} content={betObj.content} />;
         return (
           <SingleBet
+            bet_id={betObj._id}
             creator_name={betObj.creator_name}
             content={betObj.content}
             options={betObj.options}
