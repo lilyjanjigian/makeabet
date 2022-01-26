@@ -8,6 +8,14 @@ const Profile = (props) => {
 
   const [userRanking, setUserRanking] = useState(0);
   // const [bets, setBets] = useState([]);
+  const [createdBets, setCreatedBets] = useState(0);
+  
+  useEffect(() => {
+        get("/api/createdbets", {creator_name: props.userName}).then((betObjs) => {
+          setCreatedBets(betObjs); // an array of vote objects
+          console.log(createdBets);
+        })}, []);
+
 
   useEffect(() => {
     console.log(`user: ${props.userName}`)
@@ -22,16 +30,14 @@ const Profile = (props) => {
     });
   }, [props.userName]);
 
+  
   useEffect(() => {
     setInterval(() => {
     console.log(`user points: ${props.points}`);
     console.log(`user id: ${props.userId}`);
-    const body = {
-      userId: props.userId
-    }
     post("/api/points").then(console.log('done updating points'))}, 3000); }, []);
 
-
+  
   return (
     <>
     <div className="Profile-TopBox">
@@ -46,6 +52,8 @@ const Profile = (props) => {
         world ranking: {userRanking}
       </div>
     </div>
+    <div className="Profile-Ranking"> created by you </div>
+    <div> {createdBets.length} </div>
     {/* <div className="Profile-BetBox">
         <div className="Profile-Subtitle">created by you</div>
         {bets.map((betObj) => {
