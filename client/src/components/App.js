@@ -5,7 +5,7 @@ import SignUpPage from "./pages/SignUpPage.js";
 import Profile from "./pages/Profile.js";
 import GlobalFeed from "./pages/GlobalFeed.js";
 import NavBar from "./modules/NavBar.js";
-import ComposeBetTest from "./modules/ComposeBetTest.js";
+import PointsTest from "./modules/PointsTest.js";
 
 import "../utilities.css";
 
@@ -31,6 +31,15 @@ const App = () => {
       }
     });
   }, []);
+
+  const givePoints = setInterval(addPoints, 2000);
+    const addPoints = () => {
+      new_points = user.points + 25
+      setUserPoints(new_points)
+    }
+  useEffect(() => {
+    givePoints;
+  })
 
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
@@ -64,7 +73,6 @@ const App = () => {
       ) : (
         <Router>
           <SignUpPage default />
-          <ComposeBetTest path="/composebet" />
         </Router>
       )}
     </>
