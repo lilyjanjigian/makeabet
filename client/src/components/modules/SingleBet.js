@@ -12,8 +12,9 @@ import SingleVote from "./SingleVote.js";
 store user IDs of each people and then compares to see if the person has voted 
 have a list property of users who have placed a bet on a specific bet */
 const SingleBet = (props) => {
-
-  const [hasVoted, setHasVoted] = useState(false)
+  const [voters, setVoters] = useState([]);
+  const [newVoter, setNewVoter] = useState(null);
+  const [hasVoted, setHasVoted] = useState(false);
   const [votes, setVotes] = useState([]);
 
   const checkExpiration = () => {
@@ -45,20 +46,34 @@ const SingleBet = (props) => {
             get("/api/votes", {parent_id: props.bet_id}).then((voteObjs) => {
               console.log(voteObjs);
               setVotes(voteObjs); // an array of vote objects
+
             });
           }
       }, 2000);
       }
   }, []);
 
+
+  useEffect(() => {
+    console.log('voters list:', voters)
+    if (votes.length !== 0) {
+      votes.map((voteObj) => {
+        setNewVoter(voteObj.creator_name);
+        if (voters.includes(newVoter)) {} else {
+          setVoters([...voters,newVoter]);
+        }
+  })}}, [votes]);
+
   const generateVotes = () => {
     let totalVotes = null;
     if (votes.length !== 0) {
       totalVotes = votes.map((voteObj) => {
+      
         console.log(`vote obj: ${JSON.stringify(voteObj)}`);
         return (
           <SingleVote creator_name = {voteObj.creator_name} content={voteObj.content} />
         );
+        
       }); //map takes in a function, which we will apply to every item in the array
     } else {
       totalVotes = <div> no votes! </div>;
@@ -77,10 +92,12 @@ const SingleBet = (props) => {
       <div>
         {checkExpiration() ? (
           <> <div> this bet has expired and votes are no longer being accepted! see all the votes: </div>
-          <div>  {generateVotes()} </div> </>
+          <div>  {generateVotes()} </div>
+</>
         ) : (
           hasVoted ? <> <div> your vote was submitted! see all the votes: </div>
-          <div>  {generateVotes()} </div> </>: 
+          <div>  {generateVotes()} </div> 
+          <div> All voters: {voters} </div></>: 
           <><div> {props.options.map((opt) => (
             <SingleOption key={opt.id} votes={opt.votes} hasVoted={hasVoted} setHasVoted={setHasVoted} parent_id = {props.bet_id} parent_content={props.content} content={opt.name} />
           )) }</div></>
