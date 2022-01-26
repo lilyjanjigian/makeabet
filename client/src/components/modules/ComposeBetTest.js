@@ -61,21 +61,21 @@ const ComposeBetTest = () => {
   // }
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <textarea class="ComposeBetTest-betinput"
         type="text"
         onChange={handleBetChange}
         value={value}
         name="bet"
         placeholder="Create a bet"
       />
-
+  <div className="ComposeBetTest-addoptionsection">
       {formValues.map((element, index) => (
-        <div className="form-inline" key={index}>
-          <label>Option</label>
-          <input
+        <div className="form-inline" className="ComposeBetTest-optionremove" key={index}>
+          <input class="ComposeBetTest-optioninput"
+  
             type="text"
             name="name"
-            placeholder = "Add option" index
+            placeholder = "Add option" 
             value={element.name || ""}
             onChange={(e) => handleChange(index, e)}
           />
@@ -86,20 +86,25 @@ const ComposeBetTest = () => {
           ) : null}
         </div>
       ))}
-      <label>Expires</label>
+      <button className="ComposeBetTest-button" type="button" onClick={() => addFormFields()}>
+          Add Option
+        </button>
+        </div>
+        <div className="ComposeBetTest-submissionbuttons" >
+      <label className="ComposeBetTest-expirationinput">Expires</label>
       <DateTimePicker
         minDate = {new Date()}
         onChange={onDateTimeChange}
         value = {dateTimeValue}
       />
-      <div className="button-section">
-        <button className="ComposeBetTest-button" type="button" onClick={() => addFormFields()}>
-          Add Option
-        </button>
+      <div className="ComposeBetTest-finalbuttons" 
+ >
+        
         <PointsTest selectedValue={pointValue} handlePointChange={handlePointChange}/>
         <button className="ComposeBetTest-button" type="submit">
           BET
         </button>
+      </div>
       </div>
     </form>
   );

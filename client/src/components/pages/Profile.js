@@ -43,7 +43,6 @@ const Profile = (props) => {
     <div className="Profile-TopBox">
       <div className="Profile-UserName">
         {props.userName}
-        {/* <SideBar userName={props.userName} points={props.points} ranking={userRanking} /> */}
       </div>
       <div className="Profile-Points">
         points: {props.points}
@@ -54,12 +53,7 @@ const Profile = (props) => {
     </div>
     <div className="Profile-Ranking"> created by you </div>
     <div> {createdBets.length} </div>
-    {/* <div className="Profile-BetBox">
-        <div className="Profile-Subtitle">created by you</div>
-        {bets.map((betObj) => {
-          betObj.content
-        })}
-      </div> */}
+
     </>
   );
 };

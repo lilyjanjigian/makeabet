@@ -21,6 +21,50 @@
 @media all and (max-width: 30em) {
   .ComposeBetTest-button {
     display: block;
-    margin: 0.4em auto;
   }
+}
+
+.ComposeBetTest-betinput {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  font-size: large;
+  justify-content: flex-start;
+  text-align: left;
+  vertical-align: top;
+  font-family: "Michroma" sans-serif;
+}
+
+.ComposeBetTest-optioninput {
+  width: 100%;
+  height: 100%;
+  font-family: "Michroma" sans-serif;
+}
+
+.ComposeBetTest-expirationinput {
+  color: #ffffff;
+  font-family: "Michroma", sans-serif;
+}
+
+.ComposeBetTest-addoptionsection {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.ComposeBetTest-submissionbuttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.ComposeBetTest-finalbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.ComposeBetTest-optionremove {
+  display: flex;
+  flex-direction: row;
 }
