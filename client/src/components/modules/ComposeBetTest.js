@@ -6,6 +6,7 @@ import DateTimePicker from 'react-datetime-picker';
 const ComposeBetTest = () => {
   const [value, setValue] = useState("");
   const [formValues, setFormValues] = useState([{ name: "" }]);
+  const [dateTimeValue, onDateTimeChange] = useState(new Date());
   const handleBetChange = (event) => {
     setValue(event.target.value);
   };
@@ -26,11 +27,13 @@ const ComposeBetTest = () => {
     setFormValues(newFormValues);
   };
 
-  const addBet = (value, formValues) => {
+  const addBet = (value, formValues, dateTimeVal) => {
     const body = {
       content: value,
       options: formValues,
+      time_expired: new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(dateTimeVal),
     };
+    console.log(dateTimeVal)
     console.log(value);
     console.log(formValues);
     /* const body = { content: value, _id: props.userId, name: props.userName }; */
@@ -38,15 +41,13 @@ const ComposeBetTest = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    addBet(value, formValues);
+    addBet(value, formValues, dateTimeValue);
     setValue("");
     setFormValues([{ name: "" }]);
   };
-  let disab = false;
-  const onCalendarChange = (date) => {
-    console.log(date);
-    disab = true;
-  }
+  // const onCalendarChange = (date) => {
+  //   console.log(date);
+  // }
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -76,8 +77,12 @@ const ComposeBetTest = () => {
       <label>Expires</label>
       <DateTimePicker
         minDate = {new Date()}
-        onChange={onCalendarChange}
-        disableCalendar={disab}
+        onChange={onDateTimeChange}
+        value = {dateTimeValue}
+      />
+      <label>Point Value</label>
+      <input
+        type="text"
       />
       <div className="button-section">
         <button className="ComposeBetTest-buttonadd" type="button" onClick={() => addFormFields()}>

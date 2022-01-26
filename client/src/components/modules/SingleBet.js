@@ -62,7 +62,7 @@ const SingleBet = (props) => {
           )) }</div></>
         }
  
-
+ 
 
       </div>
       <div>Posted on {props.time_posted} </div>
