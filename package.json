@@ -32,10 +32,10 @@
     "react-datetime-picker": "^3.4.3",
     "react-dom": "^16.14.0",
     "react-google-login": "^5.2.1",
-    "react-polls": "^1.2.0",
     "react-router-dom": "^5.2.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.1",
+    "url": "^0.11.0",
     "url-loader": "^4.1.1"
   },
   "devDependencies": {

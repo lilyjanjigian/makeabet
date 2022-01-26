@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { get, post } from "../../utilities.js";
 import "./ComposeBetTest.css";
 import DateTimePicker from 'react-datetime-picker';
+import PointsTest from "./PointsTest.js";
 
 const ComposeBetTest = () => {
   const [value, setValue] = useState("");
@@ -88,6 +89,7 @@ const ComposeBetTest = () => {
         <button className="ComposeBetTest-buttonadd" type="button" onClick={() => addFormFields()}>
           Add an Option
         </button>
+        <PointsTest />
         <button className="button submit" type="submit">
           BET
         </button>

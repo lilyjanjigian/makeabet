@@ -9,7 +9,9 @@ import SingleVote from "./SingleVote.js";
 //SingleBet is a component that renders the creator and the content of a bet
 
 */
-
+/* useEffect calculates percentage 
+store user IDs of each people and then compares to see if the person has voted 
+have a list property of users who have placed a bet on a specific bet */
 const SingleBet = (props) => {
 
   const [hasVoted, setHasVoted] = useState(false)
@@ -52,6 +54,7 @@ const SingleBet = (props) => {
       <div className="u-bold" className="Card-title">
         {props.creator_name}
       </div>
+      <div>  Bet id is {props.bet_id} </div>
       <div className="Card-betcontent"> {props.content} </div>
       <div className="Card-options"></div>
       <div>
