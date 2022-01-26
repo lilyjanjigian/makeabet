@@ -22,11 +22,8 @@ const SingleBet = (props) => {
    }, [hasVoted]);
 
   useEffect(() => {
-
-
-    setInterval(() => {
+    let interval = setInterval(() => {
       console.log("asking server for new votes");
-
       get("/api/votes", {parent: props.content}).then((voteObjs) => {
         console.log(voteObjs);
         setVotes(voteObjs); // an array of vote objects

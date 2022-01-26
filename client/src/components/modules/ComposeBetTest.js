@@ -81,10 +81,6 @@ const ComposeBetTest = () => {
         onChange={onDateTimeChange}
         value = {dateTimeValue}
       />
-      <label>Point Value</label>
-      <input
-        type="text"
-      />
       <div className="button-section">
         <button className="ComposeBetTest-buttonadd" type="button" onClick={() => addFormFields()}>
           Add an Option
