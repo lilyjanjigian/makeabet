@@ -40,11 +40,7 @@ const GlobalFeed = (props) => {
             time_expired={betObj.time_expired}
             point_value={betObj.point_value}
             isresolved={betObj.isresolved}
-<<<<<<< Updated upstream
-            userPoints={props.points}
-=======
             voters={betObj.voters}
->>>>>>> Stashed changes
           />
         );
       }); //map takes in a function, which we will apply to every item in the array

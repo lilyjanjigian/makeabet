@@ -11,10 +11,10 @@ const NavBar = (props) => {
         {props.userId ? (
             <div className="NavBar-LinkContainer">
             <Link to="/" className="NavBar-Link">
-                World
+                world
             </Link>
             <Link to="/profile" className="NavBar-Link">
-                Profile
+                profile
                 {/* TO-DO: MAKE THIS SAY THE USERNAME INSTEAD OF PROFILE??*/}
             </Link>
             </div>

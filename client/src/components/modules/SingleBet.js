@@ -93,7 +93,12 @@ const SingleBet = (props) => {
         <div>Expires on {props.time_expired}</div>
       )}
       <div>Point value: {props.point_value}</div>
-      <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
+      {checkExpiration() ? (
+        <div> {props.isresolved ? "Resolved!" : "Not yet resolved"} </div>
+      ) : (
+        <></>
+      )} {/* Only displays whether or not bet is resolved after bet has expired */} 
+      
     </div>
   );
 };
